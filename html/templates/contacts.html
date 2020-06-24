@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="shortcut icon" href="../public/images/icons/Graphicloads-Flat-Finance-Global.ico" />
 </head>
 <body>
     <header>
@@ -13,8 +14,85 @@
     </header>
     <main>
         <h1>Contacts</h1>
-    </main>
 
+
+        <article>
+            <h2>Forms</h2>
+            <div>
+                <!--Methods  GET POST PUT  UPDATE DELETE-->
+                <form action="https://www.nasa.gov/" method="GET" name="my-form">
+                    <fieldset>
+                        <legend>My Form</legend>
+                        <label for="firstName  Text">
+                            <p>Enter You Name</p>
+                            <input id="firstName" name="firstName" type="text" required minlength="4" maxlength="7" placeholder="Enter You first Name">
+                        </label>
+                        <br>
+                        <p>number</p>
+                        <input type="number" max="10" min="5" required >
+                        <br>
+                        <p>password</p>
+                        <input type="password" required>
+                        <br>
+                        <p>Email</p>
+                        <input type="email">
+                        <br>
+                        <p>color</p>
+                        <input type="color">
+                        <p>date</p>
+                        <input type="date">
+                        <p>file</p>
+                        <input type="file">
+                        <p>checkbox</p>
+                        <p>I am agree</p>
+                        <input type="checkbox" required>
+
+                        <p>Radio</p>
+                        <p>first quiz</p>
+                        <label for="">
+                            <input type="radio" name="cityName"id="Lviv" value="Lviv"><span>Lviv</span>
+                        </label>
+                        <label for="">
+                            <input type="radio" name="cityName"id="LA" value="LA"><span>LA</span>
+                        </label>
+                        <label for="">
+                            <input type="radio" name="cityName"id="NY" value="NY"><span>NY</span>
+                        </label>
+
+                        <hr>
+                        <p>second quiz; How old are you?</p>
+                        <label for="">
+                            <input type="radio" name="myAge"id="18" value="18"><span>18</span>
+                        </label>
+                        <label for="">
+                            <input type="radio" name="myAge"id="20" value="20"><span>20</span>
+                        </label>
+                        <label for="">
+                            <input type="radio" name="myAge"id="24" value="24"><span>24</span>
+                        </label>
+
+                        <p>Telephone</p>
+                        <input type="tel" pattern="[A-Za-z]{3}">
+                        <p>Telephone validation</p>
+                        <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+
+                        <textarea id="story" name="story"
+                        rows="5" cols="33"></textarea>
+
+                        <p>Buttons</p>
+                        <button type="submit" id="form-button" name="mainButton" disabled>Main Button</button>
+                        <input type="submit" value="send Data">
+                        <p>Select</p>
+                        <select name="choseCity" selected="Odessa">
+                            <option value="Lviv">Lviv</option>
+                            <option value="Odessa">Odessa</option>
+                            <option value="Ternopil">Ternopil</option>
+                        </select>
+                    </fieldset>
+                </form>
+            </div>
+        </article>
+    </main>
 
     <footer>
     </footer>
