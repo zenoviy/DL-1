@@ -12,11 +12,11 @@
     line-height: 18px;
     line-break: strict;
     letter-spacing: 2px;
+    overflow: auto;
 }
 body{
     margin: 0;
     padding: 0;
-
     font-family: 'Roboto', sans-serif;
 }
 main{
