@@ -1,0 +1,106 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Notable&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Notable&family=Open+Sans&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,500;1,700;1,900&display=swap');
+
+
+*{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: rgb(31, 0, 0);
+    text-transform: capitalize;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 18px;
+    line-break: strict;
+    letter-spacing: 2px;
+}
+body{
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Roboto', sans-serif;
+}
+main{
+    overflow: auto;
+}
+footer, main aside, main .min-block-height, header {
+    padding-top: 10px;
+}
+h1, h2, h3 {
+    text-align: center;
+}
+main p, h1, h2, h3, h4, h5, h6 {
+    padding: 10px;
+    padding: 5px 10px 6px 10px;
+    /*margin-top: 0px;
+    margin-bottom: 0px;
+    margin: 10px 10px 30px 5px;*/
+}
+main aside{
+    float: left;
+}
+a{
+    color: red;
+}
+ul li{
+    background:black;
+}
+nav ul li {
+    float: left;
+    padding: 10px;
+    text-align: center;
+    list-style: none;
+}
+nav ul{
+    margin: 0px;
+}
+body header nav ul li.selected{
+    background-color: rgb(255, 255, 255);
+}
+body main div{
+    background: #000;
+}
+#main-head{
+    border-bottom: 5px solid rgb(226, 192, 0);
+}
+#main-head .main-logo{
+    float: right;
+}
+
+
+
+.background-blue {
+    background: #73A0F5;
+}
+.background-red {
+    background: rgb(250, 0, 42);
+}
+.background-green {
+    background: #ADFE30;
+}
+
+
+
+.side-bar{
+    width: 20%;
+}
+.main-nav{
+
+}
+.main-head{
+    min-height: 10vh;
+}
+.footer{
+    width: 100%;
+    min-height: 10vh;
+    /*max-height: 10vh;*/
+}
+.main-body{
+    width: 60%;
+    float: left;
+}
+.min-block-height{
+    min-height: 80vh;
+}
+
+
+
