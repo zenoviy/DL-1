@@ -23,7 +23,7 @@ main{
     overflow: auto;
 }
 footer, main aside, main .min-block-height, header {
-    padding-top: 10px;
+    padding-top: 5px;
 }
 h1, h2, h3 {
     text-align: center;
@@ -56,9 +56,7 @@ nav ul{
 body header nav ul li.selected{
     background-color: rgb(255, 255, 255);
 }
-body main div{
-    background: #000;
-}
+
 #main-head{
     border-bottom: 5px solid rgb(226, 192, 0);
 }
@@ -77,6 +75,69 @@ body main div{
 .background-green {
     background: #ADFE30;
 }
+.main-button {
+    background: #000000;
+    padding: 10px;
+    min-width: 40px;
+    border-radius: 5px;
+    color: #ffffff;
+    display: inline-block;
+    border: 2px solid #FF00B3;
+    cursor: pointer;
+    box-sizing: border-box;
+    text-align: center;
+}
+.header-static-menu{
+    position: fixed;
+    width: 100%;
+}
+
+.upper-head-near-button {
+    width: 48%;
+    float: left;
+}
+.button-group {
+    max-width: 450px;
+    margin: 0 auto;
+}
+.upper-head-block-bottom {
+    display: block;
+    min-width: 49%;
+    margin: 0 auto;
+    margin-top: 66px;
+}
+
+
+.page-limit-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.page-limit-container .header-logo {
+    float: right;
+    overflow: hidden;
+}
+.page-limit-container .header-logo img {
+    width: 30px;
+}
+
+.header-banner {
+    min-height: 400px;
+    background-image: url(https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+   /* background-position-x: 0px;
+    background-position-y: 0px;*/
+    background-size: contain;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.header-banner .main-logo{
+    width: 100px;
+    margin: 0 auto;
+    display: block;
+    margin-top: 53px;
+    margin-bottom: 38px;
+}
 
 
 
@@ -87,7 +148,7 @@ body main div{
 
 }
 .main-head{
-    min-height: 10vh;
+    min-height: 5vh;
 }
 .footer{
     width: 100%;
@@ -99,8 +160,56 @@ body main div{
     float: left;
 }
 .min-block-height{
-    min-height: 80vh;
+    min-height: 100vh;
 }
 
 
+.column-article p{
+    column-count: 3;
+  }
+.round-avatars .round-picture-element{
+    width: 100px;
+    height: 100px;
+    background: #bbbbbb;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.round-avatars{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
 
+.market-area .market-item {
+    width: calc(100% / 4);
+    border: 1px solid;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.side-market .side-market-item {
+    overflow: hidden;
+}
+.market-area{
+    display: flex;
+    flex-wrap: wrap;
+}
+.market-area .market-item img,
+.side-market .side-market-item img {
+    width: 80%;
+    margin: 20px;
+}
+.market-area .market-item button,
+.side-market .side-market-item button {
+    width: 100%;
+    padding: 10px;
+    background: #0040FF;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.side-market {
+    display: grid;
+    grid-template-columns: 2;
+    grid-template-columns: auto auto;
+    grid-gap: 5px;
+}
