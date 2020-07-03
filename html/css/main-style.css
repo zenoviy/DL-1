@@ -181,6 +181,7 @@ body header nav ul li.selected{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    padding: 40px 0 60px;
 }
 
 .market-area .market-item {
