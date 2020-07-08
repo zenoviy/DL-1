@@ -14,6 +14,9 @@
     letter-spacing: 2px;
     overflow: auto;
 }
+html {
+    scroll-behavior: smooth;
+  }
 body{
     margin: 0;
     padding: 0;
@@ -373,7 +376,7 @@ body header nav ul li.selected{
 
 @media screen and (min-width: 1200px) {
     .background-green {
-        background: rgb(188, 0, 226);
+        background: rgb(0, 173, 226);
     }
     .market-area .market-item {
         width: calc(100% / 5);
