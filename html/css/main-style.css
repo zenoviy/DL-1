@@ -43,18 +43,38 @@ a{
 }
 ul li{
     background:black;
+    transition:  linear 1.5s;
 }
+ul li {
+    border-right: 2px solid #08f700;
+}
+ul li:last-child {
+    border-right: 0px;
+}
+
+
+ul li:hover {
+    background: green;
+    
+}
+ul li:hover a {
+    color: #fff;
+}
+
+
+
 nav ul li {
     float: left;
     padding: 10px;
     text-align: center;
     list-style: none;
 }
+
 nav ul{
     margin: 0px;
 }
 body header nav ul li.selected{
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.37);
 }
 
 #main-head{
@@ -90,6 +110,7 @@ body header nav ul li.selected{
 .header-static-menu{
     position: fixed;
     width: 100%;
+    z-index: 10;
 }
 
 .upper-head-near-button {
@@ -144,8 +165,8 @@ body header nav ul li.selected{
 .side-bar{
     width: 20%;
 }
-.main-nav{
-
+.uss-sidebar{
+    display: block;
 }
 .main-head{
     min-height: 5vh;
@@ -216,4 +237,171 @@ body header nav ul li.selected{
     grid-template-columns: 2;
     grid-template-columns: auto auto;
     grid-gap: 5px;
+}
+
+.example-pictures {
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    transition: .5s cubic-bezier(0,.94,.99,.18);
+}
+.example-pictures:hover {
+    transform: scale(1.1);
+    z-index: 1;
+    filter: grayscale(0);
+}
+
+.border-example-pic {
+    border-top-left-radius: 10%;
+    border-top-right-radius: 30%;
+    border-bottom-right-radius: 5%;
+    border-bottom-left-radius: 40%;
+}
+
+.gradient-box {
+    width: 80%;
+    margin: 0 auto;
+    height: 200px;
+    background: #bbb;
+    margin-top: 10px;
+}
+.gradient-box-1 {
+    background: linear-gradient(#fff, #ff9a02);
+    background: linear-gradient(
+        90deg,
+        #ffbc14 0%,
+        #2989d8 30%,
+        #ff9a02 30%,
+        #ff9a02 80%,
+        #ff2121 100%
+    );
+}
+.gradient-box-1-5 {
+    background: linear-gradient(
+        to top,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    #ff9a02 100%
+    );
+}
+.gradient-box-2 {
+    background: radial-gradient(
+        closest-side,
+        rgba(255,224,71,1) 0%,
+        rgba(255,92,89,1) 40%,
+        rgba(5,171,224,0) 100%);
+}
+
+
+
+.blur-style {
+    filter: blur(9px);
+}
+.gray-scale-style {
+    filter: grayscale(1);
+}
+
+.hue-rotate {
+    filter: hue-rotate(180deg);
+}
+
+.pseudo-text p:first-child {
+    color: rgb(0, 68, 255);
+}
+.pseudo-text p:last-child {
+    color: red;
+}
+.pseudo-text p:nth-child(4) {
+    color: orange;
+}
+
+.pseudo-text p:nth-child(even) {
+    background: rgb(201, 201, 201);
+}
+.pseudo-text p:first-letter {
+    color: red;
+}
+
+.pseudo-text:last-child::after {
+    content: "$ after";
+    color: red;
+}
+.pseudo-text:last-child::before {
+    content: "i am before";
+    color: rgb(161, 0, 175);
+}
+
+
+.background-animation {
+    height: 300px;
+    background-image: url(../public/images/backgrounds/city-1.jpg);
+    background-position-x: 0px;
+
+    background-size: 100%;
+    animation:  background-move 5s 1s linear infinite;
+}
+
+@keyframes background-move {
+    0% { background-position-x: 0px; }
+    50% { background-position-x: 150px; transform: rotateY(0deg)}
+    100% { background-position-x: 100px; background-position-y: 100px; transform: rotateY(180deg)}
+}
+
+
+.bouncing-group {
+    height: 250px;
+}
+.bouncing-group img {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin-top: 20px;
+    position: relative;
+    margin-top: 0px;
+    animation: bouncing-earth 3s ease-in-out infinite;
+}
+
+@keyframes bouncing-earth {
+    0% { margin-top: 0px; transform: rotateZ(0deg);}
+    30% { height: 100px; }
+    45% { margin-top: 150px; height: 50px; }
+    50% { margin-top: 150px; height: 60px; }
+    100% { margin-top: 0px; transform: rotateZ(360deg); }
+}
+
+
+@media screen and (min-width: 1200px) {
+    .background-green {
+        background: rgb(188, 0, 226);
+    }
+    .market-area .market-item {
+        width: calc(100% / 5);
+    }
+}
+@media screen and (max-width: 650px) {
+    ul li {
+        width:100%;
+        border-right: 0px;
+        background: #bbb;
+    }
+    .background-green {
+        background: aqua;
+    }
+    .uss-sidebar{
+        display: none;
+    }
+    .main-body {
+        width: 100%;
+        float: none;
+    }
+    .side-bar {
+        width: 100%;
+    }
+    .market-area .market-item {
+        width: calc(100% / 2);
+    }
+    .side-market {
+        grid-template-columns: auto;
+    }
 }
