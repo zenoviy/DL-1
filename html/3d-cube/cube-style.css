@@ -1,0 +1,17 @@
+:root {
+    --main-background-color: #000000;
+    --side-width: 300px;
+    --cube-order-color: #201b1b;
+    --page-font-color: #ffffff;
+    --page-font-size: 22px;
+
+    --block-side-opacity: .6;
+    --animation-timing: 10s;
+
+    --side-1: rgba(255, 0, 0, var(--block-side-opacity));
+    --side-2: rgba(0, 0, 255, var(--block-side-opacity));
+    --side-3: rgba(0, 128, 0, var(--block-side-opacity));
+    --side-4: rgba(128, 0, 128, var(--block-side-opacity));
+    --side-5: rgba(255, 255, 0, var(--block-side-opacity));
+    --side-6: rgba(255, 166, 0, var(--block-side-opacity));
+}
