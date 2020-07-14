@@ -1,0 +1,11 @@
+@media screen and (max-width: 900px){
+	.card-wrapper {
+	    grid-template-columns: auto auto;
+	}
+	.grid-container {
+	    display: grid;
+	    grid-column-gap: var(--gap);
+	    grid-row-gap: var(--gap);
+	    grid-template-columns: auto auto auto
+	}
+}
