@@ -86,7 +86,8 @@
 		margin-top:40%;
 	}
 	.featured-project {
-		background-position:top;
+        background-position:top;
+        background-image: url(../img/phone-small.png),linear-gradient(120deg, #f4590b, #ffde58);
 	}
 	.menu-button{
     	display: block;
