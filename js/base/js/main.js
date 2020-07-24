@@ -264,8 +264,8 @@ console.log(dataCorrectSort, arrayReverse);
 */
 
 
-var arr = ["asd", "cvbc", "wer", "cvb", "erter", "wer", "gfdgfd", "cbcb", "wer"];
-var arr1 = [1, 2, 3, 4, 45 ,56, 1];
+//var arr = ["asd", "cvbc", "wer", "cvb", "erter", "wer", "gfdgfd", "cbcb", "wer"];
+//var arr1 = [1, 2, 3, 4, 45 ,56, 1];
 
 
 /*var arrMap = arr1.map((item, index) => {
@@ -275,7 +275,7 @@ var arr1 = [1, 2, 3, 4, 45 ,56, 1];
 
 console.log(arrMap)*/
 
-var objectToFind = "wer";
+//var objectToFind = "wer";
 /*var person = arr.find((item, index) => {
     return item == objectToFind;
 })
@@ -299,7 +299,7 @@ var isItemHereEvery = arr1.every((item) => item < 100);
 console.log(isItemHere, isItemHereEvery);*/
 
 
-const entryObject = arr.entries();
+//const entryObject = arr.entries();
 
 /*
 console.log(entryObject.next().value)
@@ -332,6 +332,258 @@ var result = sumArray.reduce((accumulator, value) => {
 })
 console.log(result)
 */
+
+
+// =========== Logics ============  //
+var [a, b, c] = ['-34', NaN, '0'];
+
+var [d, e, f] = [34, "34", false];
+
+/*if(a > b){
+    if(a > c){
+        document.write("A is greater")
+    }else document.write("C is greater")
+}else if(b > c){
+    document.write("B is greater")
+}else {
+    document.write("C is greater")
+}*/
+
+/*
+if(isNaN(a) || isNaN(b) || isNaN(c)) {
+    document.write("There is no b or c or a")
+}else  if( a > b && a > c){
+    document.write("A is greater")
+}else
+
+if(b > c && b > a){
+    document.write("B is greater")
+} else {
+    document.write("C is greater")
+}
+*/
+
+
+
+/*
+//  ==
+console.log(a == e)
+//  ===
+console.log(a === e)
+//  !   !=  !==
+console.log(a != e)
+//   >   <
+console.log(a > b)
+console.log(a < c)
+// >=   <=
+console.log(a <= d)*/
+
+//  ||   &&
+
+/*if(a && b && c && f){
+    console.log("Дані присутні")
+}else console.log("Дані неповні")*/
+
+/*if(true && (true || false) && true && true){
+    console.log("Дані присутні")
+}else console.log("Дані неповні")*/
+/*
+if(false || false || false || f){
+    console.log("Дані присутні")
+}else console.log("Дані неповні")
+*/
+
+/*
+switch(true){
+    case a <= 10:
+        document.write("a les then 10")
+        break
+    case a >= 10 && a < 20:
+        document.write("a les then 20 but more then 10")
+        break
+    case a >= 20 && a < 50:
+        document.write("a les then 50 but more then 20")
+        break
+    default:
+        console.log("A is more then 50")
+}
+
+switch(a){
+    case '-34':
+        document.write("a is" + a)
+        break
+    default:
+        document.write("a is other")
+}
+
+
+var ternary = (a || b || c)? "Something go wrong"
+:(a > b)? "Hello"
+: "Hi" ;
+
+console.log(ternary)
+
+
+var myInteger = 30;
+
+var result = (myInteger % 2 == 0)? `${myInteger} is Even` : `${myInteger} is Odd`;
+console.log(result, myInteger % 2);
+*/
+/*
+if( myInteger % 2 == 0){
+    console.log(myInteger, "is Even")
+}else console.log(myInteger, "is Odd")*/
+
+// ++   --
+
+var someInteger = 1;
+
+++someInteger;
+someInteger++;
+//console.log(someInteger)
+
+
+// ================  Loops  ================= //
+// for  ( init ,  condition , increment )   condition != true  increment ++
+// while    n < 3
+// do while
+
+// for of   // "asd", "dfgd"
+// for in      //  0, 1, 2, ...
+
+var brakePoint = "bcvbcv1";
+var continuePoint = "fgdg";
+var arr = [
+    "asda",
+    "fgdg",
+    "bcvbcv",
+    "dgdfg",
+    "hgdf"
+];
+
+/*
+for(let i = 0; i < arr.length; i++){
+    if(arr[i] === brakePoint) break
+    if(arr[i] === continuePoint) continue
+    //console.log(i, arr[i])
+}
+
+for(let i = 10; i >= 0; i--){
+    //if(i >= 2 && i < 8) continue
+    console.log(i)
+    if(arr[i]){
+        console.log(arr[i])
+    }
+
+}*/
+
+/*var n = 0;
+var t = 5-2;
+while( n < 5 ) {
+    n++
+    ///console.log(n);
+}
+
+do{
+    t++
+    console.log(t)
+}while( t < 5 )*/
+//console.log(t)
+
+/*
+for(let index in arr){
+    console.log(typeof index, index, arr[index])
+}
+for(let item of arr){
+    console.log(item, item.length, arr.indexOf(item))
+}
+*/
+
+var numberArr = [23, 344, 565, 22, 1, 0, 34, -3];
+
+var max = -Infinity;
+var min = Infinity;
+
+
+for(let i = 0; i < numberArr.length; i++){
+    if(numberArr[i] < min){
+        min = numberArr[i];
+    }
+    if(numberArr[i] > max){
+        max = numberArr[i];
+    }
+}
+console.log(min, max)
+
+
+// bubble sorting
+
+/**/
+for(let i = 0; i < numberArr.length; i++){
+    for(let j = 0; j < numberArr.length; j++){
+        if(numberArr[j] > numberArr[j + 1] && (numberArr[j + 1] || numberArr[j + 1] == 0)){
+            let jCopy = numberArr[j];
+            numberArr[j] = numberArr[j + 1];
+            numberArr[j + 1] = jCopy;
+        }
+    }
+}
+
+console.log(numberArr)
+
+
+
+var intFirst = parseInt(prompt("Enter first number"));
+var intSecond = parseInt(prompt("Enter Second number"));
+var mathAction = prompt("Enter math action");
+
+var validate = true;
+
+
+console.log(intFirst,intSecond, mathAction )
+if(
+    !intFirst || !intSecond || !mathAction ||
+    (typeof intFirst != "number" | typeof intSecond != "number" ||
+    (mathAction != "+" &&  mathAction != "-" && mathAction != "*" && mathAction != "/"
+))
+){
+    alert("Incorrect Input")
+    validate != validate;
+
+    if(typeof intFirst != "number") alert("Incorrect First number you must enter the Number");
+    if(typeof intSecond != "number") alert("Incorrect Second number you must enter the Number");
+    if(mathAction != "+" &&  mathAction != "-" && mathAction != "*" && mathAction != "/") alert("Incorrect math action you must enter + - * / ");
+
+    if(!intFirst) alert("Incorrect First number");
+    if(!intSecond) alert("Incorrect Second number");
+    if(!mathAction) alert("Incorrect math action");
+}
+
+
+if(intFirst && intSecond && mathAction && validate){
+    if(confirm("Do you want to make some calculations?")){
+        let result;
+        switch(true){
+            case mathAction == "+":
+                result = intFirst + intSecond;
+                break;
+            case mathAction == "-":
+                result = intFirst - intSecond;
+                break;
+            case mathAction == "*":
+                result = intFirst * intSecond;
+                break;
+            case mathAction == "/":
+                result = intFirst / intSecond;
+                break;
+            default:
+        }
+        alert(result)
+    }else alert("So sorry i hope you know what you doing")
+}
+
+
+
 
 
 
