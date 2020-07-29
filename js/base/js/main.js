@@ -637,7 +637,6 @@ var funcObj = new Function('a', 'b', funcBody);
 })(5, 6)
 
 // clousure  замкненість
-
 function clousureFoo(x) {
     return function(y) {
         //console.log(x, y, "clousure")
@@ -645,9 +644,8 @@ function clousureFoo(x) {
     }
 }
 var clFoo = clousureFoo(5);
+
 //console.log( clFoo(21) );
-
-
 function grgumentCheck(a, b, c){
     arguments[0] = 100;
     let arg = arguments;
@@ -743,6 +741,7 @@ function getUserData(){
     let mathAction = prompt("Enter math action");
     return [].concat(intFirst, intSecond, mathAction)
 }
+
 
 function validationUserData(inputValue){
     if(!inputValue) return console.error("No data")
