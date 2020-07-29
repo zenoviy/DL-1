@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Sort</title>
+</head>
+<style>
+.container{
+  max-width: 1000px;
+  margin: 0 auto;
+}
+</style>
+<body>
+    
+<p class="container">
+    Напишіть JavaScript програму для перевірки успішності студентів з різних груп, з різними оцінками
+    Оцінки Хороші студенти: 89-100  Середні студенти: 65-88  Слабкі студенти 0-64
+    та виводу інформації по рейтингам на екран за допомогою document.write()</p>
+    <br><br>
+    
+    <ol class="container">
+      Вхідні дані: 
+        <li>Один або декілька масивів з числами від 0 до 100</li>
+        <li>Дві глобальні змінні з вказівкою найкращих результатів і середніх результатів</li>
+    </ol>
+    <br>
+
+  <p class="container">
+    1) Програма має складатись з 4-х функцій
+    2) в стартовій функції усі студентські групи мають бути об'єднані в 1 великий масивів
+    3) потім цей масив має бути переданий в сортувальник де мають бути об'явлені 3 локальні масиви для 3-х груп студентів
+    4) і ці 3 масиви мають ввійти в один фінальний багатовимірний масив масив який буде передаватись на відображення
+    5) Запускаємо подвійний цикл щоб обійти багатовимірний масив в 1-му циклі ми відображаємо групу студентів від успішних до недуже
+    6) в другому заходимо в групу студентів і відображаємо її
+
+    все відображається на дисплеї html сторінки за допомогою document.write() в ньому доступні усі html теги для стилізації <pre class="container">< br >< hr ></pre>
+    
+</p>
+
+<script>
+var studentsGroupA = [78, 65, 12, 56, 67, 92, 95, 98];
+var studentsGroupB = [23,56, 90, 100, 67, 74, 12, 67];
+
+var goodPoint = 89;
+var normPoints = [65, 88];
+
+/* ===========  Entry point  =========== */
+initStudentCount(studentsGroupA, studentsGroupB);
+
+function initStudentCount(){
+    console.log(...arguments)
+	var allStudents = [].concat(...arguments);
+    var sortedStudents = findStudentsMark(allStudents);
+    displayStudentsMark(sortedStudents);
+}
+
+
+/* ===========  Бізнес логіка задачі  =========== */
+
+/* ===========  Сортування студентів =========== */
+function findStudentsMark(students){
+	var goodStudents=[], normStudents = [], badStudents= [];
+	for(let studentMark of students){
+        if(studentMark >= goodPoint){
+            sortStudents(studentMark, goodStudents)  //console.log(studentMark, "Good mark")
+        }else if(studentMark >= normPoints[0] && studentMark <= normPoints[1]){
+            sortStudents(studentMark, normStudents) //console.log(studentMark, "Norm mark")
+        }else{
+            sortStudents(studentMark, badStudents)  //console.log(studentMark, "Bad mark")
+        }
+    }
+    return [].concat([goodStudents], [normStudents], [badStudents]) 
+}
+
+function sortStudents(studentMark, array){
+  return array.push(studentMark)
+}
+
+
+/* ===========  Відображення результатів =========== */
+function displayStudentsMark(sortedStudents){
+	for(let i = 0; i < sortedStudents.length; i++){
+        if(i == 0) document.write("<br><br> Good Students A+ <hr>")
+        else if(i == 1) document.write("<br><br> Normal Students B <hr>")
+        else if(i == 2) document.write("<br><br> Bad Students C <hr>")
+        for(let j = 0; j < sortedStudents[i].length; j++){
+      	    document.write(` ${j+1}) ${sortedStudents[i][j]}<br>`)
+        }
+    }
+}
+</script>
+</body>
+</html>
