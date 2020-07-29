@@ -519,6 +519,7 @@ console.log(min, max)
 // bubble sorting
 
 /**/
+/*
 for(let i = 0; i < numberArr.length; i++){
     for(let j = 0; j < numberArr.length; j++){
         if(numberArr[j] > numberArr[j + 1] && (numberArr[j + 1] || numberArr[j + 1] == 0)){
@@ -580,7 +581,236 @@ if(intFirst && intSecond && mathAction && validate){
         }
         alert(result)
     }else alert("So sorry i hope you know what you doing")
+}*/
+
+
+/////====================  Function  ======================= ///
+
+//var a = myFunction(56, 3);
+//console.log(myVar)
+
+function myFunction(a, b){              /// Declaration Function
+    //console.log(a + b)
+    var ba = 45;
+    var result = a + b + sec();
+    console.log(result, ba)
+    return result
+    
+    function sec(){
+        return 45
+    }
 }
+
+///var myVar = 34;
+/*
+var b =  myFunction(5, 7);
+var c = myFunction(555, 78);
+var d = myFunction(12323, 787878);*/
+
+//console.log(a, b, c, d)
+
+var secondFunction = function(a, b){                // Expresion function
+    return a + b
+}
+var res = secondFunction(5, 7);
+
+//console.log(secondFunction)
+
+
+var arrowFunc = (a, b) => a + b;
+var extArrowFonc = (a, b, c) => {
+    var result = a + b + c;
+    return result
+}
+
+//console.log(arrowFunc(10, 5))
+
+var funcBody = `return a + b`;
+var funcObj = new Function('a', 'b', funcBody);
+//console.log(funcObj(13, 13));
+
+
+// IIFE
+(function(a, b){
+    var res = funcObj(a, b);
+    console.log(res , "IIFE")
+})(5, 6)
+
+// clousure  замкненість
+
+function clousureFoo(x) {
+    return function(y) {
+        //console.log(x, y, "clousure")
+        return x + y;
+    }
+}
+var clFoo = clousureFoo(5);
+//console.log( clFoo(21) );
+
+
+function grgumentCheck(a, b, c){
+    arguments[0] = 100;
+    let arg = arguments;
+    console.log(arguments)
+}
+
+//grgumentCheck(4, 5, 3)
+
+
+// recursion Data Tree    
+
+function recursion(a){
+    if( a <= 0) return
+    //console.log(a)
+    recursion(--a)
+}
+
+recursion(10)
+
+
+
+function pow(x, n) {
+    if (n == 1) {
+      return x;
+    } else {
+    //console.log(n, x, "<<")
+      return x * pow(x, --n);
+    }
+}
+//console.log( pow(4, 3) );
+
+
+/*function myCallBack(a, b){
+    return a + b
+}*/
+
+
+function invokeSmth(first, second, callback){
+    if(first && second){
+        let result = first + second; 
+        setTimeout( async function(){
+            return callback(result)
+        }, 2000)
+    }
+    console.log("script ended")
+}
+
+//var result = invokeSmth(5, 7, myCallBack);
+var resultSecond = invokeSmth(5, 7, (res) => {
+    let result = res + " callback";
+    console.log("callback fire")
+    console.log(result)
+    return result
+});
+
+//  generic function 
+
+
+function* generic(a){
+    yield a + "/home";
+    yield a + "/product/";
+    yield a + "/product/:id";
+    yield a + "/contacts";
+}
+
+const gen = generic('http:/hostname.com');
+
+//console.log(gen.next().value)
+//console.log(gen.next().value)
+//console.log(gen.next().value)
+//console.log(gen.next().value)
+
+
+
+
+init()
+
+function init() {
+    let inputValue = getUserData();
+    let validForm = validationUserData(inputValue);
+
+    let finalResult = (validForm)? calculationProcess(inputValue) : "Something go wrong";
+    alert(finalResult)
+    if(confirm("Do you want to Calculate something else?")){
+        init()
+    }
+}
+
+
+function getUserData(){
+    let intFirst = parseInt(prompt("Enter first number"));
+    let intSecond = parseInt(prompt("Enter Second number"));
+    let mathAction = prompt("Enter math action");
+    return [].concat(intFirst, intSecond, mathAction)
+}
+
+function validationUserData(inputValue){
+    if(!inputValue) return console.error("No data")
+    for(let inputField of inputValue){
+        if(!inputField && inputField != 0){
+            alert("Incorrect field, pleaseTry again");
+            init()
+            return
+        }
+    }
+    console.log("form successfull") 
+    return true
+}
+
+/* =================== name of comments =================== */
+//
+// body
+//
+//
+/* =================== end ===================== */
+
+function calculationProcess(params){
+    let result, intFirst = params[0], intSecond = params[1],
+    mathAction = params[params.length - 1];
+
+    let infiniteTest = checkOfInfinity(intSecond, mathAction);
+    if(infiniteTest) return init()
+    switch(true){
+        case mathAction == "+" || mathAction == "-" || mathAction == "*" || mathAction == "/":
+            result = calculation(intFirst, intSecond, mathAction);
+            break;
+        default:
+            alert("Incorrect Math Action must be + - / *")
+            init()
+            return
+    }
+    return result
+}
+
+
+
+
+function calculation(a, b, mathAction){
+    let result = eval(`${a} ${mathAction} ${b}`);
+    console.log(result, "Math action", a, b, mathAction)
+    return result
+}
+
+
+
+
+function checkOfInfinity(number, mathAction){
+    if(mathAction == '/' && number == 0){
+        alert("Devided by 0")
+        return true
+    }
+    return
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
