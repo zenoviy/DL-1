@@ -513,7 +513,7 @@ for(let i = 0; i < numberArr.length; i++){
         max = numberArr[i];
     }
 }
-console.log(min, max)
+//console.log(min, max)
 
 
 // bubble sorting
@@ -633,7 +633,7 @@ var funcObj = new Function('a', 'b', funcBody);
 // IIFE
 (function(a, b){
     var res = funcObj(a, b);
-    console.log(res , "IIFE")
+   // console.log(res , "IIFE")
 })(5, 6)
 
 // clousure  замкненість
@@ -649,7 +649,7 @@ var clFoo = clousureFoo(5);
 function grgumentCheck(a, b, c){
     arguments[0] = 100;
     let arg = arguments;
-    console.log(arguments)
+  //  console.log(arguments)
 }
 
 //grgumentCheck(4, 5, 3)
@@ -682,7 +682,7 @@ function pow(x, n) {
     return a + b
 }*/
 
-
+/*
 function invokeSmth(first, second, callback){
     if(first && second){
         let result = first + second; 
@@ -711,7 +711,7 @@ function* generic(a){
     yield a + "/contacts";
 }
 
-const gen = generic('http:/hostname.com');
+const gen = generic('http:/hostname.com');*/
 
 //console.log(gen.next().value)
 //console.log(gen.next().value)
@@ -719,7 +719,7 @@ const gen = generic('http:/hostname.com');
 //console.log(gen.next().value)
 
 
-
+/*
 
 init()
 
@@ -756,12 +756,7 @@ function validationUserData(inputValue){
     return true
 }
 
-/* =================== name of comments =================== */
-//
-// body
-//
-//
-/* =================== end ===================== */
+
 
 function calculationProcess(params){
     let result, intFirst = params[0], intSecond = params[1],
@@ -799,7 +794,323 @@ function checkOfInfinity(number, mathAction){
         return true
     }
     return
+}*/
+
+
+/*========================  Object  ============================*/
+
+// String           // constructor     // new String("text")
+// Number 
+// Array
+// Function
+// Object
+
+// RangeError
+// TypeError
+
+
+const myObj = {
+    id: 2313,
+    firstName: "John",
+    secondName: "Smidth",
+    age: 22,
+    details: {
+        location: "USA",
+        city: "LA",
+        work: {
+            position: "Developer",
+            scope: "Software",
+            income: 50000,
+            tasks: {
+                main: "Prepare cofee",
+                showMeYouTask(){
+                    console.log(this.main)
+                }
+            },
+            onWorkStatus: true 
+        },
+        cars: ["Opel", "BMW", "Volvo"]
+    },
+    showFullName(){
+        //console.log("Hello", myObj.firstName, myObj.secondName)
+        console.log(this.firstName, this.secondName);
+        var text = `Hello ${this.firstName} ${this.secondName} ${this.details.location}`;
+        document.write(text)
+    },
+    changingAge: function(year){
+        this.age += year;
+        //console.log(this)
+        document.write(`<br> User age is ${this.age}`)
+    }
+};
+
+
+
+//const mySecondObject = new Object();
+myObj.details.work.income += 10000;
+myObj['height'] = 180;
+
+myObj.details.pets = {
+    cat: "Tom",
+    dog: "Woolfy"
 }
+//delete myObj.firstName;
+
+
+//console.log(  myObj )
+
+//myObj.showFullName();
+//myObj.changingAge(1);
+
+
+
+var main = "I am the main variable";
+var showMeYouTaskGlobal = myObj.details.work.tasks.showMeYouTask;
+
+
+// call, apply, bind
+//showMeYouTaskGlobal.call(myObj.details.work.tasks);
+//myObj.details.work.tasks.showMeYouTask();
+
+///console.log(typeof myObj, typeof mySecondObject, mySecondObject, Object)
+
+
+
+var obj1 = {
+    name: "Lviv", 
+    cityLocation: "Ukraine"
+};
+var obj2 = {
+    width: 17, 
+    height: 20,
+    details: {
+        large: true,
+        airport: true
+    }
+};
+var obj2_5 = {
+    name: "LA", 
+    cityLocation: "USA"
+};
+
+
+var obj3 = {...obj1, ...obj2, ...obj2_5};
+//console.log(obj3)
+
+
+var {name, cityLocation} = obj3;
+//console.log(name, cityLocation)
+
+
+
+var str = new String("Text");
+//console.log( str instanceof Number )
+
+
+//Object.freeze(obj3)
+//Object.seal(obj3)
+
+
+
+//console.log(Object.isFrozen(obj3))
+//console.log(Object.isSealed(obj3))
+
+obj3.name = "New York";
+obj3.city = "Orlando";
+
+
+var obj4 = Object.assign({}, obj3, { type: "Large", color: "green"},  myObj);
+
+obj4.name = "I can change it";
+//console.log(obj3, obj4)
+
+
+var obj5 = Object.create(Array.prototype);
+//console.log(obj5)
+
+
+var obj6 = {
+    name: "test",
+    type: 1
+}
+
+/**/Object.defineProperty(obj6, "age", {
+    value: 12,
+    enumerable: false
+})
+
+obj6.age = 111;
+//console.log(obj6)
+/*for(let [key, val] of Object.entries(obj6)){
+    console.log(key)
+}*/
+
+
+Object.defineProperties(obj6, {
+    name: {
+        value: "lviv",
+        enumerable: true,
+        writable: false
+    },
+    size: {
+        value: 20,
+        enumerable: false,
+        writable: true
+    }
+})
+
+//console.log(obj6)
+
+var enriesObj = Object.entries(myObj);
+
+//console.log(enriesObj)
+for(let [key, value] of enriesObj){
+    //console.log(key, value)
+}
+
+var keysOfObject = Object.keys(myObj);
+//console.log(keysOfObject)
+
+var propsPresent = myObj.hasOwnProperty("secondName");
+//console.log(propsPresent)
+
+
+
+function objectDive(targetObject){
+    for(let [key, value] of Object.entries(targetObject)){
+        if(key, value){
+            //console.log(key, value);
+
+            if(value instanceof Object && (!value.length && value.length != 0)){
+                objectDive(value)
+            }
+        }
+    }
+}
+
+//objectDive(myObj)
+
+
+
+
+function CreateUser(name, age, details){
+    this.name = name;
+    this.age = age;
+    this.details = details;
+    this.showAge = function(){
+        console.log(this.age)
+    }
+}
+CreateUser.prototype.showName = function(){
+    console.log(this.name)
+}
+
+Array.prototype.sayHello = function(){
+    alert("Hello Array")
+}
+
+
+var arrHello = [];
+
+
+//arrHello.sayHello()
+var user1 = new CreateUser("John", 22, 
+{ 
+    cityLocation: 'Lviv',
+    job: {
+        name: "MIT"
+    }
+});
+
+//user1.showAge()
+//user1.showName()
+// console.log(user1)
+
+class Creator {
+    constructor(name, age = 22){
+        this.name = name;
+        this.age = age;
+    }
+
+    showAge(){
+        console.log("class age " + this.age)
+    }
+    get showName(){
+        console.log("class name " + this.name)
+    }
+    set changeName(newName){
+        if(!newName) return
+        this.name = newName;
+        this.showName
+    }
+}
+
+class CreatorUserNext extends Creator {
+    constructor(props){
+        super(props.name, props.age)
+        this.cityLocation = props.cityLocation;
+        this.job = props.job;
+    }
+}
+
+
+var user2 = new Creator("Ian", 33);
+
+
+user2.showAge()
+user2.showName
+user2.changeName = "Mary";
+console.log(user2)
+
+var userDescriptionObject = {
+    name: "Terri",
+    age: 44,
+    cityLocation: 'Lviv',
+        job: {
+        name: "MIT"
+    }
+}
+
+
+var user3 = new CreatorUserNext(userDescriptionObject);
+console.log(user3)
+
+
+var serverObject = [].concat(myObj, myObj, myObj);
+serverObject.forEach(user => user.id =  + Math.floor(Math.random() * new Date().getTime()))
+
+
+
+console.log(serverObject)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
