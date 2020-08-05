@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Sort</title>
+</head>
+<style>
+    ul li {
+        list-style: none;
+    }
+    .container{
+    max-width: 1000px;
+    margin: 0 auto;
+    }
+    .student-card {
+        padding: 10px;
+    }
+    .student-card:nth-child(even){
+        background: #eee;
+    }
+    .green-list:nth-child(even){
+        background: rgba(1, 59, 1, 0.425)
+    }
+    .green-list:nth-child(odd){
+        background: rgba(119, 156, 119, 0.425)
+    }
+
+    .yellow-list:nth-child(even){
+        background: rgba(59, 48, 1, 0.425)
+    }
+    .yellow-list:nth-child(odd){
+        background: rgba(156, 137, 119, 0.425)
+    }
+
+    .red-list:nth-child(even){
+        background: rgba(59, 1, 1, 0.425)
+    }
+    .red-list:nth-child(odd){
+        background: rgba(156, 119, 119, 0.425)
+    }
+
+</style>
+<body>
+    
+<p class="container">
+    Напишіть JavaScript програму для перевірки успішності студентів з різних груп, з різними оцінками
+    Оцінки Хороші студенти: 89-100  Середні студенти: 65-88  Слабкі студенти 0-64
+    та виводу інформації по рейтингам на екран за допомогою document.write()</p>
+    <br><br>
+    
+    <ol class="container">
+      Вхідні дані: 
+        <li>Один або декілька масивів з числами від 0 до 100</li>
+        <li>Дві глобальні змінні з вказівкою найкращих результатів і середніх результатів</li>
+    </ol>
+    <br>
+
+  <p class="container">
+    1) Програма має складатись з 4-х функцій
+    2) в стартовій функції усі студентські групи мають бути об'єднані в 1 великий масивів
+    3) потім цей масив має бути переданий в сортувальник де мають бути об'явлені 3 локальні масиви для 3-х груп студентів
+    4) і ці 3 масиви мають ввійти в один фінальний багатовимірний масив масив який буде передаватись на відображення
+    5) Запускаємо подвійний цикл щоб обійти багатовимірний масив в 1-му циклі ми відображаємо групу студентів від успішних до недуже
+    6) в другому заходимо в групу студентів і відображаємо її
+
+    все відображається на дисплеї html сторінки за допомогою document.write() в ньому доступні усі html теги для стилізації <pre class="container">< br >< hr ></pre>
+</p>
+<div class="container">
+    <ul id="user-list-display"></ul>  
+</div>
+
+<script>
+var studentsGroupA = [{
+    categoryId: 1,
+    id: 1,
+    name: "John Smith",
+    mark: 78,
+    course: "Math"
+},{
+    categoryId: 1,
+    id: 2,
+    name: "Felix Jackson",
+    mark: 65,
+    course: "Langulage"
+},{
+    categoryId: 1,
+    id: 3,
+    name: "Chantelle Hasan",
+    mark: 12,
+    course: "Phisics"
+},{
+    categoryId: 1,
+    id: 4,
+    name: "Joel Francis",
+    mark: 56,
+    course: "Phisics"
+},{
+    categoryId: 1,
+    id: 5,
+    name: "Justin Francis",
+    mark: 67,
+    course: "Astronomy"
+},{
+    categoryId: 1,
+    id: 6,
+    name: "Carlos Oskar",
+    mark: 92,
+    course: "Phisics"
+},{
+    categoryId: 1,
+    id: 7,
+    name: "Francis Lucas",
+    mark: 95,
+    course: "Language"
+},{
+    categoryId: 1,
+    id: 8,
+    name: "Sonny Carys",
+    mark: 98,
+    course: "Astronomy"
+}];
+var studentsGroupB = [
+{
+    categoryId: 2,
+    id: 1,
+    name: "Cleo Seth",
+    mark: 23,
+    course: "Math"
+},{
+    categoryId: 2,
+    id: 2,
+    name: "Hugo Francis",
+    mark: 56,
+    course: "Langulage"
+},{
+    categoryId: 2,
+    id: 3,
+    name: "Mary Brett",
+    mark: 90,
+    course: "Phisics"
+},{
+    categoryId: 2,
+    id: 100,
+    name: "Sana Jenna",
+    mark: 56,
+    course: "Phisics"
+},{
+    categoryId: 2,
+    id: 5,
+    name: "Victoria Willard",
+    mark: 67,
+    course: "Astronomy"
+},{
+    categoryId: 2,
+    id: 6,
+    name: "Tomas Dale",
+    mark: 74,
+    course: "Phisics"
+},{
+    categoryId: 2,
+    id: 7,
+    name: "Nathaniel Rowan",
+    mark: 12,
+    course: "Language"
+},{
+    categoryId: 2,
+    id: 8,
+    name: "Anne Marshall",
+    mark: 67,
+    course: "Astronomy"
+}
+];
+
+var goodPoint = 89;
+var normPoints = [65, 88];
+
+
+
+/* ===========  Entry point  =========== */
+initStudentCount(studentsGroupA, studentsGroupB);
+
+function initStudentCount(){
+	var allStudents = [].concat(...arguments);
+    var sortedStudents = findStudentsMark(allStudents);
+    displayStudentsMark(sortedStudents);
+}
+
+
+/* ===========  Бізнес логіка задачі  =========== */
+
+/* ===========  Сортування студентів =========== */
+function findStudentsMark(students){
+	var goodStudents=[], normStudents = [], badStudents= [];
+	for(let studentInfo of students){
+        if(studentInfo.mark >= goodPoint){
+            sortStudents(studentInfo, goodStudents) 
+        }else if(studentInfo.mark  >= normPoints[0] && studentInfo.mark <= normPoints[1]){
+            sortStudents(studentInfo, normStudents)
+        }else{
+            sortStudents(studentInfo, badStudents)
+        }
+    }
+    return [].concat([goodStudents], [normStudents], [badStudents]) 
+}
+
+function sortStudents(studentInfo, array){
+  return array.push(studentInfo)
+}
+
+
+/* ===========  Відображення результатів =========== */
+function displayStudentsMark(sortedStudents){
+    var userLIstDisplay = document.querySelector("#user-list-display");
+	for(let i = 0; i < sortedStudents.length; i++){
+        var rowHeader =  createElement("h1", "user-header", `<br> ${
+            (i == 0)? "Good Students A+" :
+            (i == 1)? "Normal Students B" : "Bad Students C"}`)
+        
+        let classDisplay = (i == 0)? "green-list" : (i == 1)? "yellow-list" : "red-list";
+        userLIstDisplay.appendChild(rowHeader);
+        for(let j = 0; j < sortedStudents[i].length; j++){
+            let currentStudentInfo = sortedStudents[i][j]
+            let innerText = `
+                <div>
+                    ${currentStudentInfo.name} from list ${currentStudentInfo.categoryId}
+                    <p><mark>${currentStudentInfo.mark}</mark> <span>${currentStudentInfo.course}</span></p>
+                </div>`;
+            
+            let newStudentElement = createElement("li", `student-card ${classDisplay}`, innerText);
+            userLIstDisplay.appendChild(newStudentElement);
+        }
+        
+    }
+}
+
+
+function createElement(tag, className, innerText){
+    var newObject = document.createElement(tag);
+    newObject.className = (className)? className : false;
+    newObject.innerHTML = (innerText)? innerText : false;
+
+    return newObject
+}
+</script>
+</body>
+</html>

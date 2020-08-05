@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model</title>
+</head>
+<style>
+    .box-active {
+        background: green !important;
+    }
+    .box-deactive {
+        background: rgba(255, 146, 73, 0.733) !important;
+    }
+    .image-wrapper {
+        width: 350px;
+    }
+</style>
+<body>
+    <!-- ID   CLASS   TAG -->
+    <h1 id="main-header-area">Document Object Model <span>Child</span></h1>
+    <h2 id="main-header-area-second">Second <p>i am a paragraph</p></h2>
+
+
+    <div id="outer-paragraph-wrapper">
+        <p class="test-box">test</p>
+        <p class="test-box box-active">test</p>
+        <p class="test-box box-deactive">test <span>i am a span</span></p>
+        <p class="test-box">test</p>
+        <p class="test-box">test</p>
+    </div>
+    
+
+    <span>i am a span <span>Test</span></span>
+
+    <img id="main-image">
+    <script src="./script.js"></script>
+</body>
+</html>
