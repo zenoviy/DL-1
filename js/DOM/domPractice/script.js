@@ -56,8 +56,12 @@ function displayWithNewElements(mainAppObject){
     var outerClassSecond = "outer-calss-2";
     var outerClassThird = "outer-calss-3";
     if(!userDatabase || !displayTarget) return console.error("Something go wrong with Data")
+     
+    displayTarget.innerHTML = "";
+    if(userDatabase.length < 1) displayTarget.innerHTML = `No user Yet!!!`;
+
+
     for(let userItem of userDatabase){
-        console.log(userItem)
         let ineerDocumentHtml = `
             <span>${ userItem.id }</span>
             <h4>${ userItem.name }</h4>
@@ -66,14 +70,23 @@ function displayWithNewElements(mainAppObject){
                 (userItem.age >= 20 && userItem.age < 40)? outerClassSecond : outerClassThird }" alt="">
             <p>age : ${ userItem.age }</p>
         `;
-        let newUserCard = newDomElementCreator("li", "user-list-card", ineerDocumentHtml);
+        let newUserCard = newDomElementCreator("li", "user-list-card", ineerDocumentHtml, function(event){
+            console.log(userItem, userItem.name)
+        });
+        let delateButton = newDomElementCreator("button", "delete-button", "<span>Delete X</span>", function(event){
+            //console.log("delete X",  userItem.name)
+            if(confirm(`You about to delet User: ${userItem.name}?`)){
+                userDeleter(mainAppObject, userItem.id)
+            }
+        })
+        newUserCard.appendChild(delateButton);
         displayTarget.appendChild(newUserCard);
     }
 }
 
 
 
-function displayWithStringElements(mainAppObject){
+/*function displayWithStringElements(mainAppObject){
     const displayTarget = mainAppObject.selectors.userWrapper;
     const userDatabase = mainAppObject.userDatabase;
     if(!userDatabase || !displayTarget) return console.error("Something go wrong with Data")
@@ -89,13 +102,28 @@ function displayWithStringElements(mainAppObject){
         `;
     }
     displayTarget.innerHTML = finalList;
-}
+}*/
 
 
-function newDomElementCreator(tagName, styleClass, ineerDocumentHtml){
+function newDomElementCreator(tagName, styleClass, ineerDocumentHtml, eventCallback){
     let newElement = document.createElement(tagName);
     newElement.className = (styleClass)? styleClass : false;
     newElement.innerHTML = (ineerDocumentHtml)? ineerDocumentHtml : false;
+
+    if(eventCallback) newElement.addEventListener("click", (event) => {
+        eventCallback(event)
+    })
     return newElement;
 }
 
+
+function userDeleter(mainAppObject, userId){
+    const userDatabase = mainAppObject.userDatabase;
+    let userDbIndex = userDatabase.indexOf(userDatabase.find(userInfo => {
+        return userInfo.id == userId
+    }))
+    if(!userDbIndex && userDbIndex != 0) return console.error("cant find user")
+    userDatabase.splice(userDbIndex, 1)
+    displayWithNewElements(mainAppObject)
+    //console.log(userDatabase, "Delete ")
+}

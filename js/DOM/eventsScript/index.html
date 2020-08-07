@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <script src="./script.js"></script>
+</head>
+<style>
+    .button-standart {
+        background: #E8E8E8;
+        border: 1px solid #ACACAC;
+        display: inline;
+        padding: 1px 1%;
+    }
+    .button-standart:hover {
+        background: #DFEEFC;
+        border: 1px solid #8aaccc;
+    }
+    .button-standart:active {
+        background: #b1d4f5;
+        border: 1px solid #6792bb;
+        padding: 1px 1% 1px 2%;
+    } 
+</style>
+<body>
+        <button onclick="handleClick.call(this, 'Hello')">Click HTML</button>
+        <button id="click-button-html">Click JS HTMLElements</button>
+        <button id="click-button-listener">Click Event Listener</button>
+        <button id="click-button-listener-dblclick">dblclick</button>
+
+        <div class="button-standart" id="fake-button">Click on div element</div>
+
+        <button data-my-click-event="My Data Event">Data Target</button>
+        <button data-my-click-event="My Data Event Second">Data Target 2nd</button>
+
+       
+        <ul>
+            <li id="id-1"i data-list-elements="counter">1</li>
+            <li id="id-2" data-list-elements="counter">2</li>
+            <li id="id-3" data-list-elements="counter">3</li>
+            <li id="id-4" data-list-elements="counter">4</li>
+        </ul>    
+    <p id="display-position-area"></p>
+
+<script>
+    alert("Script loaded simple way")
+</script>
+</body>
+</html>
