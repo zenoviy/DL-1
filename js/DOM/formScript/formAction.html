@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Action</title>
+</head>
+<body>
+    <h1>User Action</h1>
+    <div id="display-area"> </div>
+
+    <script>
+        const displayArea = document.querySelector("#display-area");
+
+        let url = new URL(location.href);
+        let search = new URLSearchParams(url.search);
+
+        let finalObject = {};
+        for(let [key, val] of search.entries()){
+            console.log(key, val)
+            finalObject[key] = val
+        }
+
+        displayArea.innerHTML = `<p>User Name: ${finalObject.firstName} ${finalObject.lastName} Uaer Age: ${finalObject.userAge}</p>`
+
+    </script>
+</body>
+</html>

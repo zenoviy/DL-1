@@ -39,11 +39,13 @@
             }
         ],
         selectors: {
-            userWrapper: document.querySelector("#user-display-wrapper")
+            userWrapper: document.querySelector("#user-display-wrapper"),
+            userForm: document.forms["creteUserForm"] 
         }
     }
     displayWithNewElements(appState)
     //displayWithStringElements(appState)
+    activateForm(appState)
 })()
 
 
@@ -125,5 +127,47 @@ function userDeleter(mainAppObject, userId){
     if(!userDbIndex && userDbIndex != 0) return console.error("cant find user")
     userDatabase.splice(userDbIndex, 1)
     displayWithNewElements(mainAppObject)
-    //console.log(userDatabase, "Delete ")
+}
+
+
+function addNewUser(mainAppObject, newUserData){
+
+    mainAppObject.userDatabase = mainAppObject.userDatabase.concat(newUserData);
+    displayWithNewElements(mainAppObject)
+}
+
+
+
+//  Form logic
+
+
+function activateForm(mainAppObject){
+    const form = mainAppObject.selectors.userForm;
+
+    form.addEventListener("submit", function(e){
+        e.preventDefault()
+        console.log(this)
+        let newUserData = createUserObject(this)
+        addNewUser(mainAppObject, newUserData)
+    })
+}
+
+
+function createUserObject(userForm){
+    let userResult = {
+        details: {}
+    }
+    for(let formInput of userForm){ 
+        console.log(formInput)
+        if(formInput.name && formInput.value){
+            if(formInput.type == "url"){
+                userResult.details[formInput.name] = formInput.value;
+            }else userResult[formInput.name] = formInput.value; 
+        }
+    }
+
+    userResult.id = new Date().getTime();
+    console.log(userResult)
+
+    return userResult
 }

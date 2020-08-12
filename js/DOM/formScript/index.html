@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form JS</title>
+</head>
+<body>
+    <h1>Input works</h1>
+    <p id="display-chengeble-field"></p>
+    <p id="city-display"></p>
+    <input id="enter-input-text" type="text" >
+
+    <select id="city-selection">
+        <option value="lviv">Lviv</option>
+        <option value="la">LA</option>
+        <option value="ny">NY</option>
+    </select>
+
+
+    <input id="agree-box" type="checkbox" value="agreeBox" name="agree-box" checked>
+
+    <hr>
+    <h1>Form data</h1>
+    <div id="user-data-display"></div>
+    <form name="main-user-form" action="#">
+        <fieldset>
+            <legend>User Form</legend>
+            <label for="firstName">
+                <p>Enter the user first name</p>
+                <input id="firstName" name="firstName" type="text" placeholder="Enter you first name" required>
+            </label>
+            <label for="lastName">
+                <p>Enter the user last name</p>
+                <input id="lastName" name="lastName" type="text" placeholder="Enter you last name" required>
+            </label>
+
+
+            <label for="userAge">
+                <p>Enter the user last name</p>
+                <input id="userAge" name="userAge" type="number" placeholder="Enter you age" required>
+            </label>
+
+            <label for="userCountry">
+                <p>Chose you country</p>
+                <select id="userCountry" name="userCountry">
+                    <option value="United States">United States</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="Ukraine" selected="selected">Ukraine</option>
+                    <option value="Poland">Poland</option>
+                </select>
+            </label>
+
+            <label >
+                <p>Select the inline HTML tag</p>
+                <input type="radio" name="htmlQuizAnsver" value="div"><span>div</span>
+                <input type="radio" name="htmlQuizAnsver" value="form"><span>form</span>
+                <input type="radio" name="htmlQuizAnsver" value="span"><span>span</span>
+                <input type="radio" name="htmlQuizAnsver" value="p"><span>p</span>
+            </label>
+
+            <hr>
+            <label for="userThemeColor">
+                <p>Chose you userTheme</p>
+                <input id="userThemeColor" type="color" name="userThemeColor" value="#ff0000">
+            </label>
+
+            <input name="userAgree" type="checkbox">
+            <input type="submit" value="send"> 
+        </fieldset>
+    </form> 
+
+    <hr>
+    <h1>Form Action remote data</h1>
+
+    <form action="./formAction.html">
+        <fieldset>
+            <legend>Form Action</legend>
+            <label for="firstName">
+                <p>Enter the user first name</p>
+                <input id="firstName" name="firstName" type="text" placeholder="Enter you first name" required>
+            </label>
+            <label for="lastName">
+                <p>Enter the user last name</p>
+                <input id="lastName" name="lastName" type="text" placeholder="Enter you last name" required>
+            </label>
+
+
+            <label for="userAge">
+                <p>Enter the user last name</p>
+                <input id="userAge" name="userAge" type="number" placeholder="Enter you age" required>
+            </label>
+
+            <button type="submit">Send user to server</button>
+        </fieldset>
+    
+    </form>
+
+    <hr>
+    <h1>File input works</h1>
+    <div id="picture-area"></div>
+    <input id="file-uloader-input" type="file" required>
+
+
+
+<script src="./formScript.js"></script>
+
+</body>
+</html>

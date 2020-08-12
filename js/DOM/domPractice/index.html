@@ -34,12 +34,35 @@
     }
 </style>
 <body>
-    <div>
-        <h2>User List</h2>
-        <ol id="user-display-wrapper">
-            
-        </ol>
+    <div class="user-data-wrapper">
+        <div>
+            <form name="creteUserForm">
+                <fieldset>
+                    <legend>Crete new user</legend>
+                    <label for="name">
+                        <p>Enter Full user Name</p>
+                        <input id="name" type="text" name="name" required placeholder="Enter you full name"> 
+                    </label>
+                    <label for="age">
+                        <p>Enter user Age</p>
+                        <input id="age" type="number" name="age" required placeholder="Enter user Age"> 
+                    </label>
+
+                    <label for="picUrl">
+                        <p>Enter user Age</p>
+                        <input id="picUrl" type="url" name="picUrl" pattern="https://.*" required placeholder="Enter picture url"> 
+                    </label>
+
+                    <input type="submit" value="create new user">
+                </fieldset>
+            </form>
+        </div>
+        <div>
+            <h2>User List</h2>
+            <ol id="user-display-wrapper"></ol>
+        </div>
     </div>
+    
     
 <script src="./script.js"></script>
 </body>
