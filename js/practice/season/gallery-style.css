@@ -1,0 +1,47 @@
+body {
+    background: #000;
+}
+
+* {
+    color: #ffffff;
+}
+h1, h2, h3 {
+    text-align: center;
+    text-transform: uppercase;
+}
+.container-area {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.gallery-inner-wrapper .gallery-view-area {
+    width: 100%;
+    min-height: 200px;
+    background: #663077;
+}
+
+.gallery-inner-wrapper .gallery-btn {
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+    background: rgba(0, 0, 0, .4);
+    border: 0px;
+    padding: 10px;
+    font-size: 4rem;
+}
+.gallery-inner-wrapper .btn-right {
+    right: 0; 
+}
+
+.gallery-view-area .gallery-text-area {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 26px;
+    text-shadow: 2px 2px 25px #000;
+} 
+
+.gallery-view-area img {
+    width: 100%;
+}
