@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.circle{
+		width:100px;
+		height:100px;
+		position:absolute;	
+		border-radius:150px;
+	}
+	.red{
+		background:red;
+	}
+	.blue{
+		background:blue;
+	}
+	.area{
+		width:99vw;
+		height:99vh;
+		border:1px solid;
+		box-sizing: border-box;
+	}
+	body{
+		margin:0;
+		padding:0;
+	}
+</style>
+<body>
+	<!--<div id="box" class="circle red"></div>
+	<div id="box_1" class="circle blue"></div>-->
+	<div id="activeArea" class="area"></div>
+</body>
+<script>
+	
+var marginCount = 0;		
+var moveDirection = true;	
+var topMove = 0;		
+var verticalHeigh = 500;  
+var myInterval
+
+var block_position_arr = [];
+var block_direction_arr = [];
+var block_pos_vertical_arr = [];
+var block_direction_vertical_arr = [];
+
+var block_id_arr = [];
+var blockStyle = [];
+var blockWidth = [];
+
+var idCount = 0;
+var block_number = 15;
+var localNumber = 0;
+
+var newBlock = "";
+
+myInterval = setTimeout(function(){  
+	while(localNumber < block_number){
+		localNumber += 1;
+		newBlock = document.createElement("div");    
+		newBlock.classList.add("circle","red");
+		newBlock.setAttribute('id',"box_"+localNumber+"");
+		document.getElementById("activeArea").appendChild(newBlock);
+		block_position_arr.push(Math.floor(Math.random()*1250+1))
+		block_direction_arr.push(true)
+		block_pos_vertical_arr.push(Math.floor(Math.random()*500+1))
+		block_direction_vertical_arr.push(500)
+//alert(blockStyle)
+		block_id_arr.push("box_"+localNumber+"")
+		blockStyle.push("background-color: #"+(Math.floor(Math.random()*9+1))+""+(Math.floor(Math.random()*9+1))+""+(Math.floor(Math.random()*9+1))+""+(Math.floor(Math.random()*9+1))+""+(Math.floor(Math.random()*9+1))+""+(Math.floor(Math.random()*9+1))+";")
+		var size = Math.floor(Math.random()*100+1)
+		blockWidth.push("width:"+size+"px; height:"+size+"px;")
+		
+	}
+
+	moveStarter()   
+}, 2000); 
+
+
+
+function moveStarter(){
+	myInterval = setInterval(function(){  
+		for(var i=0; i<block_id_arr.length; i++){
+			marginCount = block_position_arr[i];
+			moveDirection = block_direction_arr[i];
+			blockMove();
+
+			topMove  = block_pos_vertical_arr[i];
+			verticalHeigh = block_direction_vertical_arr[i];
+			topMoveVertical() 
+			
+			moveDisplay(block_id_arr[i], blockStyle[i], blockWidth[i]);
+
+			block_position_arr.splice(i,1,marginCount);
+			block_direction_arr.splice(i,1,moveDirection);
+
+			block_pos_vertical_arr.splice(i,1,topMove);
+			block_direction_vertical_arr.splice(i,1,verticalHeigh);
+		} 
+	}, 1); 
+}
+
+	function blockMove(){ 
+		//alert(moveDirection +"<"+direction_transfer)
+		if((moveDirection == true)&&(marginCount<=1250)){  
+			marginCount++			
+			if(marginCount>=1250){ 
+				moveDirection = false;
+			}
+		}else if((moveDirection == false)&&(marginCount>0)){ 
+			//alert(marginCount)
+			marginCount--	
+			//alert(marginCount)	
+			if(marginCount<=0){
+				moveDirection = true;
+			}
+		}	
+	}
+
+	function topMoveVertical(){
+		if((verticalHeigh == 500)&&(topMove <= verticalHeigh)){	
+			topMove++
+			if(topMove>500){
+				verticalHeigh = 0;
+			}
+		}else if((verticalHeigh == 0)&&(topMove >= verticalHeigh)){   
+			topMove--
+			if(topMove<0){   
+				verticalHeigh = 500;   
+			}
+		}
+	}
+	function moveDisplay(idElement, color, size){
+		document.getElementById(idElement).style ="margin-left:"+marginCount+"px; margin-top:"+topMove+"px;"+color+size; 
+	}
+
+
+
+</script>
+</html>

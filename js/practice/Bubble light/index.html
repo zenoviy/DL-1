@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Light</title>
+</head>
+<style>
+    body {
+        background: rgb(44, 48, 68);
+    }
+    canvas {
+        display: block;
+        background: #ffffff;
+        width: 90%;
+        margin: 0 auto;
+        height: 550px; 
+    }
+    .main-btn {
+        color: #ffffff;
+        background: none;
+        padding: 15px;
+        border-radius: 50px;
+        border: 1px solid #ffffff;
+        min-width: 150px;
+        cursor: pointer;
+        outline: none;  
+        margin-top: 20px;
+    }
+    .main-btn:active {
+        background: #ffffff;
+        color: rgb(44, 48, 68);
+        outline: none;
+    }
+    #text-area {
+        text-align: center;
+        color: #ffffff;
+    }
+    .buttons-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+<body>
+    <div>
+        <div>
+            <div id="text-area"></div>
+            <canvas id="bubble-display-area"></canvas>
+            <div class="buttons-wrapper">
+                <button id="pause-btn" class="main-btn">Pause</button>
+                <button id="restart-btn" class="main-btn">Restart</button>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

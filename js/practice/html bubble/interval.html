@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.circle{
+		width:100px;
+		height:100px;
+		position:absolute;
+		background:red;
+		border-radius:150px;
+	}
+	html{
+		overflow:hidden;
+	}
+</style>
+<body>
+	<div id="box" class="circle"></div>
+</body>
+<script>
+	
+	// створюю глобальні змінні
+var marginCount = 0;		// це числова перемінна яку ми використовуємо для числа пікселів в стилі margin-left
+var moveDirection = true;	// це перемінна булеан використовуємо як перемикач напрямків руху блоку по горизонталі
+var topMove = 0;		// це числова перемінна яку ми використовуємо для числа пікселів в стилі margin-top
+var verticalHeigh = 500;  // це перемикач напрямку але іншого типу привязується до числа (висота до якої вертикальний скрипт буде переклчатись)
+var myInterval
+
+myInterval = setTimeout(function(){  // setTimeout відкладає завантаження скрипта на час в мілісекундах
+	moveStarter()   //  після 2 секунд запускається головний скрипт
+}, 2000); // setTimeout відкладає завантаження крипта на час в мілісекундах
+
+
+
+function moveStarter(){
+	myInterval = setInterval(function(){  // це функція інтервалу setInterval, інтервал рацює з деяким часом, час вказується в мілісекундах 1 секунда = 1000 мілісекунд і він буде працювати весь час, щоб зупинити інтерва потрібно виконати дію:    clearInterval(myInterval);
+		blockMove()	 // ця функція відповідає за обчислення горизонтального руху 
+		topMoveVertical()  // ця функція відповідає за обчислення вертикального руху 
+		document.getElementById("box").style ="margin-left:"+marginCount+"px; margin-top:"+topMove+"px;";   //  Отримую доступ до елементу HTML по індетифікатору ID  і даю цьому об'єкту через властивість .style  (як атрибут елеменьту) стиль відступ зліва
+
+	}, 1); // тут час перезапуску функції
+}
+
+	function blockMove(){ 
+	// це логіка рахування в яку сторону буде рухатись блок по горизонталі
+		if((moveDirection == true)&&(marginCount<=1250)){  // перевіряємо умови чи блок буде рухатись вправо, і чи його відступ від ліва не більший за 1250px
+			marginCount++			// тут ми збільшуємо значення на 1 відступу з лівої сторони , це значення підставлятиметься в стиль і буде в пікселях
+			if(marginCount>=1250){  // умова коли блок має відступ зліва 1250px ми перемикаємо напрямок горизонтального руху
+				moveDirection = false;
+			}
+		}else if((moveDirection == false)&&(marginCount>0)){  // ця умова відповідає за рух блоку в протилежну сторону по вертикалі
+			marginCount--		
+			if(marginCount<=0){
+				moveDirection = true;
+			}
+		}	
+	}
+
+	function topMoveVertical(){
+	// це логіка рахування в яку сторону буде рухатись блок по вертикалі
+		if((verticalHeigh == 500)&&(topMove <= verticalHeigh)){		// логіка дуже схожа до горизонтального руху
+			topMove++
+			if(topMove>500){
+				verticalHeigh = 0;
+			}
+		}else if((verticalHeigh == 0)&&(topMove >= verticalHeigh)){   
+			topMove--
+			if(topMove<0){   
+				verticalHeigh = 500;   
+			}
+		}
+	}
+
+
+
+</script>
+</html>
