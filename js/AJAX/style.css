@@ -1,0 +1,6 @@
+#media-area img {
+    width: 100%;
+}
+.card-columns {
+    column-count: 4;
+}
