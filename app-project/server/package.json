@@ -1,0 +1,19 @@
+{
+  "name": "dlprojectserv",
+  "version": "1.0.0",
+  "description": "a simple DL server",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "\u001b[A\u001b[A\u001b[B\u001b[B\u001b[D\u001b[C"
+  ],
+  "author": "DL",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  }
+}
