@@ -1,0 +1,17 @@
+<div class="container page-body">
+    <h2>Home Page</h2>
+    <ul class="card-wrapper">
+            {{#each info.shopData}}
+                <li class="product-card">
+                    <div class="card-inner">
+                        <h3>{{this.name}} </h3>
+                        <h3>{{this.price}}$</h3>
+                        <img src={{this.previewUrl}}>
+                        {{#each this.image}}
+                            <img class="small-preview" src={{this}}>
+                        {{/each}}
+                    </div>
+                </li>
+            {{/each}}
+    </ul>
+</div>

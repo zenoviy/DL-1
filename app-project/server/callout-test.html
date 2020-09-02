@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gray-block {
+            background: #eeeeee;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container gray-block">
+        <p>A simple app to save and delete users from the NodeJS Express server using Fetch GET POST PUT methods  CORS </p>
+    </div>
+    
+    <div class="container">
+        <form name="mainUserForm">
+            <fieldset>
+                <legend>User Form</legend>
+                    <label>
+                        <p>Name</p>
+                        <input name="userName" type="text" placeholder="User Name" required>
+                    </label>
+                    <label>
+                        <p>Nick Name</p>
+                        <input name="nickName" type="text" placeholder="Nick Name" required>
+                    </label>
+                    <label>
+                        <p>User Email</p>
+                        <input name="userMail" type="mail" placeholder="User Mail" required>
+                    </label>
+                    <label>
+                        <p>User Email</p>
+                        <input name="userPassword" type="password" placeholder="User Password" required>
+                    </label>
+                    <button type="submit">Create User</button>
+            </fieldset>
+        </form>
+        <ul id="user-display"></ul>
+    </div>
+
+    <script>
+        (async function(){
+            const appState = {
+                data: [],
+                details: {
+                    host: "http://127.0.0.1",
+                    port: "3500",
+                    userUrl: "app-user-work"
+                },
+                selectors: {
+                    mainUserForm: document.forms["mainUserForm"],
+                    userDisplay: document.querySelector("#user-display")
+                }
+            }
+
+            await displayUSerData(appState)
+            initForm(appState)
+        })()
+
+
+
+
+
+        function serverRequest(url, method, headers, data) {
+            return fetch(url, {
+                method: method ? method : "get",
+                credentials: "same-origin",
+                headers: headers ? headers : {"Content-Type" : "application/x-www-form-urlencoded"},
+                body: data ? data : null
+            })
+            .then(data => data.json())
+        }
+
+        async function displayUSerData(mainAppObject) {
+            await refillUsers(mainAppObject)
+            displayUser(mainAppObject)
+        } 
+
+
+        
+
+
+
+        async function refillUsers(mainAppObject) {
+            let details = mainAppObject.details;
+            let url = `${details.host}:${details.port}/${details.userUrl}`;
+            let serverResponse = await serverRequest(url, "GET", null, null);
+
+            console.log(serverResponse)
+            mainAppObject.data = serverResponse.dataBody ? serverResponse.dataBody : [];
+            return serverResponse
+        }
+        function initForm(mainAppObject){
+            const form = mainAppObject.selectors.mainUserForm;
+
+            form.addEventListener("submit",async function(event) {
+                event.preventDefault();
+                const formData = {};
+
+                for(let userInput of this){
+                    if(userInput.name && userInput.value){
+                        formData[userInput.name] = userInput.value
+                    }
+                }
+
+                let details = mainAppObject.details;
+                let url = `${details.host}:${details.port}/${details.userUrl}`;
+                let serverResponse = await serverRequest(url, "post", {"Content-Type" : "application/json"}, JSON.stringify(formData))
+                console.log(serverResponse)
+                displayUSerData(mainAppObject)
+            })
+        }
+
+
+
+
+
+        
+
+        function displayUser(mainAppObject) {
+            const userDisplay = mainAppObject.selectors.userDisplay;
+            const userData = mainAppObject.data;
+            userDisplay.innerHTML = "";
+            if(userData.length < 1) userDisplay.innerHTML = "<h2>No data yet</h2>";
+
+            for(let userItem of userData){
+                let innerText = `<span> ${userItem.nickName} </span>`;
+                let newItem = createElement('li', 'single-user-item', innerText, null);
+                let deleteBtn = createElement('button', 'delete-btn', 'Delete X', async (event) => {
+                    console.log('delete')
+                    let details = mainAppObject.details;
+                    let url = `${details.host}:${details.port}/${details.userUrl}`;
+                    let serverResponse = await serverRequest(url, 'delete', {
+                        'Content-Type' : 'application/json',
+                        'selecteduserid' : userItem.id
+                    });
+                    console.log(serverResponse)
+                    displayUSerData(mainAppObject)
+                })
+                newItem.appendChild(deleteBtn)
+                userDisplay.appendChild(newItem)
+            }
+        }
+
+
+
+
+
+
+        function createElement(tag, styleClass, innerText, event) {
+            const newObject = document.createElement(tag);
+            newObject.className = styleClass ? styleClass : false;
+            newObject.innerHTML = innerText ? innerText : false;
+            if(event) newObject.addEventListener('click', function(e) {
+                event.call(this, e)
+            })
+            return newObject
+        }
+    </script>
+</body>
+</html>

@@ -1,12 +1,70 @@
 const express = require("express");
-const os = require('os');
-const fs = require('fs');
+const os = require("os");
+const fs = require("fs");
+const bodyParser = require("body-parser");
+const exphbs = require("express-handlebars");
 
-const path = require('path');
+const cors = require("cors");
+
+
+
+const path = require("path");
 const app = express();
 
 
+const { getAllUsers } = require("./business/getUsers");
+const { postSingleUser } = require("./business/postUsers");
+const { deleteSingleUser } = require("./business/deleteSingleUser");
 
+
+app.use("/home", express.static(path.join(__dirname + '/public')));
+
+const hbs = exphbs.create({
+    extname: ".handlebars",
+    partialsDir: __dirname + "/views/partials",
+    defaultLayout: "main.handlebars"
+})
+app.engine('handlebars', hbs.engine);
+app.set("view engine", "handlebars");
+
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
+app.use("/home-page", express.static(path.join(__dirname + '/public')));
+app.get("/home-page", function (req, res) {
+    let fileLink = path.join(__dirname + "/public/db/");
+
+    fs.readFile(fileLink + "product.json", (error, data) => {
+        if(error) console.log(error);
+        
+        let productData = JSON.parse(data).map(item => {
+            let newItem = Object.assign({}, item, { previewUrl : item.image[0]} );
+            return newItem;
+        });
+        
+        const pageInfo = {
+        title: "home page handlebars",
+        shopData: productData,
+        pagename: true
+    }
+        res.render('home', {
+            info: pageInfo
+        });
+    })
+})
+app.use("/about-page", express.static(path.join(__dirname + '/public')));
+app.get("/about-page", function (req, res) {
+    const pageInfo = {
+        title: "about page",
+        description: "A page dedicated information about us",
+        pagename: false
+    }
+    res.render('about', {
+        info: pageInfo
+    });
+})
 
 
 /*const http = require('http');
@@ -42,20 +100,13 @@ const data = [
 
 
 
-app.use("/home", express.static(path.join(__dirname + '/public')));
-
-
-
 
 
 app.get("/home", (req, res) => {
 let link = path.join(__dirname, "/public/page/index.html")
-    console.log(__dirname)
-    res.sendFile(link)
+    console.log(__dirname);
+    res.sendFile(link);
 });
-
-
-
 
 
 app.get("/home/users", (req, res) => {
@@ -69,8 +120,6 @@ app.get("/home/users", (req, res) => {
     res.send(fileToSend)
 });
 
-
-
 app.get("/create-text", (req, res) => {
     const data = "Hello world";
     fs.writeFile('hello.txt', data, (err) => {
@@ -81,10 +130,36 @@ app.get("/create-text", (req, res) => {
 });
 
 app.get("/json-data", (req, res) => {
-
         res.send(data)
 });
 
+
+
+
+
+app.get("/get-product", (req, res) => {
+    let fileLink = path.join(__dirname + "/public/db/");
+
+    console.log("work")
+    fs.readFile(fileLink + "product.json", (error, data) => {
+        if(error) {
+            console.log(error);
+            throw res.send({ message: "ERROR HAS BEEN OCCURED", dataBody: false});
+        }
+
+        let productData = JSON.parse(data);
+        res.send({ message: "GET PRODUCT DATA", dataBody: productData });
+    })
+})
+
+
+
+
+app.use("/app-user-work", cors(), bodyParser.json())
+app.route("/app-user-work")
+    .get( getAllUsers )
+    .post( postSingleUser )
+    .delete( deleteSingleUser )
 
 
 

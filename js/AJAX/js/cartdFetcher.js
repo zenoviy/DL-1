@@ -25,7 +25,6 @@
     }
     appState.serverData = await getServerData(appState.appInfo.photos.getUrl);
     appState.nasaNews = await getServerData(`${appState.appInfo.nasaNews.getUrl}?api_key=${appState.appInfo.nasaNews.apiKey}`);
-
     //console.log(appState.nasaNews, "News")
     displayNasaNews(appState);
     displayDataFinder(appState);
@@ -47,20 +46,17 @@ function getServerData(url){
 
 
 
+
+
 function displayNasaNews(appMainObject) {
     const news = appMainObject.nasaNews? appMainObject.nasaNews : [];
     const newsDisplayArea = appMainObject.selectors.newsDisplayArea;
     const newsHeader = appMainObject.selectors.newsHeader;
 
-
     console.log(news)
-
-
     let imageStyle = `background-image: url(${news.url})`
-    newsHeader.style = `${news.url.match("https://youtube.com")? false : imageStyle};`;
-
-    
-    let newsPicture = news.url.match("https://youtube.com")? `<iframe class="news-media" src="${news.url}"></iframe>` 
+    newsHeader.style = `${news.url.match("https://www.youtube.com")? false : imageStyle};`;
+    let newsPicture = news.url.match("https://www.youtube.com")? `<iframe class="news-media" src="${news.url}"></iframe>` 
     : `<img class="news-media" src="${news.url}" alt="${news.title}">`;
 
     let displayHtmlText = `
@@ -81,8 +77,6 @@ function displayNasaNews(appMainObject) {
     `
     let newsElement = newCardCreator("div", "row", displayHtmlText, null);
     newsDisplayArea.appendChild(newsElement);
-    
-
 }
 
 
