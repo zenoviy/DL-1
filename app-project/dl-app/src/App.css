@@ -1,0 +1,31 @@
+.app-menu {
+  width: 100%;
+  background: #0037AF;
+  position: fixed;
+  top: 0px;
+
+}
+.app-menu nav ul {
+  display: flex;
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.app-menu nav ul li {
+  padding: 10px;
+}
+.app-menu nav ul a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.app-menu nav ul .selected {
+  background: #fff;
+  color: #0037AF;
+}

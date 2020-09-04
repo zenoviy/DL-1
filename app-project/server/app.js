@@ -137,10 +137,10 @@ app.get("/json-data", (req, res) => {
 
 
 
-app.get("/get-product", (req, res) => {
+app.get("/get-product", cors(), (req, res) => {
     let fileLink = path.join(__dirname + "/public/db/");
 
-    console.log("work")
+    //console.log("work")
     fs.readFile(fileLink + "product.json", (error, data) => {
         if(error) {
             console.log(error);

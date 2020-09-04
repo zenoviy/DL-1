@@ -1,0 +1,19 @@
+h1 {
+    color: red
+}
+
+.toggle-squere {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #bbb;
+}
+
+.red-square {
+    background: red;
+}
+.yellow-square {
+    background: yellow;
+}
+.blue-square {
+    background: blue;
+}
