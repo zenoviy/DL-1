@@ -1,0 +1,49 @@
+.user-screen-container {
+    display: flex;
+}
+.user-form {
+    padding: 40px;
+    padding-top: 0px;
+}
+.user-form input {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(96, 0, 185);
+}
+.user-form input[type=submit] {
+    background: rgb(96, 0, 185);
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: .5s linear;
+    box-shadow: 0px 0px 0px rgba(96, 0, 185, 0);
+}
+.user-form input[type=submit]:hover {
+    background: rgb(255, 255, 255);
+    color: rgb(96, 0, 185);
+    /*box-shadow: 0px 0px 6px rgba(96, 0, 185, 1);*/
+}
+.user-form input[type=submit]:active {
+    box-shadow: 0px 0px 6px rgba(96, 0, 185, 1);
+}
+.user-form label p{
+    font-size: 12px;
+    color: #ff0000;
+}
+.user-screen-container ul {
+    width: 50%;
+    list-style-type: none;
+}
+.user-screen-container ul li {
+    width: 100%;
+    padding: 10px;
+}
+.user-screen-container ul li:nth-child(odd) {
+    background: rgba(96, 0, 185, 0.1);
+}
+.user-screen-container ul li button {
+    float: right;
+}

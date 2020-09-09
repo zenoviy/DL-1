@@ -28,6 +28,8 @@ app.engine('handlebars', hbs.engine);
 app.set("view engine", "handlebars");
 
 
+process.env.__HOST = "127.0.0.1";
+process.env.__PORT = 3500;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -84,8 +86,6 @@ const app = http.createServer((request, response) => {
     response.end(JSON.stringify(fileToSend))
 })*/
 
-process.env.__HOST = "127.0.0.1";
-process.env.__PORT = 3500;
 
 const data = [
     {
@@ -162,6 +162,12 @@ app.route("/app-user-work")
     .delete( deleteSingleUser )
 
 
+
+app.use(express.static(path.join(__dirname, "public/build")));
+//app.use( express.static("public"));    
+app.use((req, res, next) => {
+    res.sendFile(path.join(__dirname, "public/build", "index.html"));
+});
 
 app.listen(process.env.__PORT, process.env.__HOST, () => {
     console.log(`Server up and runing at ${process.env.__HOST} port ${process.env.__PORT} new`);

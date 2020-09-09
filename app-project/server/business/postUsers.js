@@ -5,7 +5,8 @@ const path = require("path");
 
 const postSingleUser = (req, res) => { 
     let userDataLink = path.join(__dirname + "/../public/db/");
-    if(!req.body) return res.send({ message: "NO USER DATA IN BODY"})
+    if(!req.body || Object.keys(req.body).length < 1) return res.send({ message: "NO USER DATA IN BODY"})
+    console.log(req.body, Object.keys(req.body))
     req.body.id = new Date().getTime();
 
     if(!fs.existsSync(userDataLink + "/userData.json")){
@@ -18,7 +19,9 @@ const postSingleUser = (req, res) => {
         return res.send({ message: "POST HAS BEEN ADDED", dataBody: [].concat(req.body)})
     }
 
+    
     fs.readFile(userDataLink + "/userData.json", (error, data) => {
+        
         let userData = JSON.parse(data);
         let existUser = userData.find(user => user.userMail == req.body.userMail || user.nickName == req.body.nickName);
         

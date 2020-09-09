@@ -6,14 +6,12 @@ export function HomePageComponent(props) {
         name: "App Home Object"
     }
     return(
-        <div>
+        <div className="container page-body">
             <h1>Home Page</h1>
             <AppDescription localState={appLocalState} />
         </div>
     )
 }
-
-
 
 
 export class AppDescription extends React.Component{
@@ -71,7 +69,7 @@ export class AppDescription extends React.Component{
         const price = this.state.price;
         const isTogled = this.state.isTogled;
         return(
-            <div>
+            <React.Fragment>
                 <hr></hr>
                 <p>App Description text</p>
                 <i>{ localState ? localState.name : ""}</i>
@@ -91,7 +89,7 @@ export class AppDescription extends React.Component{
                     inpuText={this.inpuText}
                     displayText={this.state.displayText}
                 > </ToggleElement>
-            </div>
+            </React.Fragment>
         )
     }
 }

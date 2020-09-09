@@ -8,12 +8,16 @@ import {
   NavLink
 } from "react-router-dom";
 
-
-
 import { HomePageComponent, AppDescription } from "./components/homeComponent/HomePage";
 import { AboutPageComponent } from "./components/aboutComponent/AboutPage";
 import { ShopPageComponent } from "./components/shopComponent/ShopPage";
+import { ShopSinglePageComponent } from "./components/shopComponent/shopSingleComponent/ShopSinglePage";
+import { UsersPageComponent } from "./components/usersComponent/UsersPage";
 import { NotFound } from "./components/notFoundComponent/NotFoundPage";
+import { FooterPageComponent } from "./components/footerComponent/FooterPart";
+
+import { ShopProvider } from "./components/shopComponent/shopProvider";
+import { UserProvider } from "./components/usersComponent/userProvider";
 
 
 function BaseRouter(props){
@@ -29,7 +33,10 @@ function BaseRouter(props){
               <NavLink exact to="/about-page" activeClassName="selected">About</NavLink>
             </li>
             <li>
-              <NavLink exact to="/shop-page" activeClassName="selected">Shop</NavLink>
+              <NavLink  to="/shop-page" activeClassName="selected">Shop</NavLink>
+            </li>
+            <li>
+              <NavLink exact to="/users-page" activeClassName="selected">Users</NavLink>
             </li>
           </ul>
         </nav>
@@ -41,11 +48,20 @@ function BaseRouter(props){
         <Route exact path="/about-page">
           <AboutPageComponent></AboutPageComponent>
         </Route>
+        <Route exact path="/users-page">
+          <UserProvider appData={props.appData}>
+            <UsersPageComponent appData={props.appData}></UsersPageComponent>
+          </UserProvider>
+        </Route>
         <Route exact path="/shop-page/:name">
-          <ShopPageComponent></ShopPageComponent>
+          <ShopProvider appData={props.appData}>
+            <ShopSinglePageComponent></ShopSinglePageComponent>
+          </ShopProvider>
         </Route>
         <Route exact path="/shop-page">
-          <ShopPageComponent></ShopPageComponent>
+          <ShopProvider appData={props.appData}>
+            <ShopPageComponent></ShopPageComponent>
+          </ShopProvider>
         </Route>
         <Route path="*">
             <NotFound />
@@ -58,13 +74,17 @@ function BaseRouter(props){
 
 function App() {
   const appLocalState = {
-    name: "APP.js component"
+    name: "APP.js component",
+    HOST: "http://localhost:3500/"
   }
 
   return (
     <div className="App">
-      <h1>Render Component</h1>
-      <BaseRouter></BaseRouter>
+      <div className="container page-body">
+        <h1>Render Component</h1>
+      </div>
+      <BaseRouter appData={appLocalState}></BaseRouter>
+      <FooterPageComponent></FooterPageComponent>
     </div>
   );
 }

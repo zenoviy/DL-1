@@ -1,0 +1,24 @@
+.side-panell-wrapper {
+    width: 15%;
+    background: #f9f9f9;
+    padding: 5px;
+}
+.side-panell-wrapper ul {
+    list-style: none;
+    padding: 0px;
+}
+.side-panell-wrapper img {
+    width: 100%;
+}
+.side-panell-wrapper li {
+    padding: 3px;
+}
+.side-panell-wrapper .selected-card {
+    background: rgb(255, 172, 17);
+}
+.side-panell-wrapper .selected-card a {
+    color: #fff;
+}
+.side-panell-wrapper a {
+    text-decoration: none;
+}

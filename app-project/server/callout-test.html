@@ -118,7 +118,7 @@
                 let details = mainAppObject.details;
                 let url = `${details.host}:${details.port}/${details.userUrl}`;
                 let serverResponse = await serverRequest(url, "post", {"Content-Type" : "application/json"}, JSON.stringify(formData))
-                console.log(serverResponse)
+                console.log(formData)
                 displayUSerData(mainAppObject)
             })
         }

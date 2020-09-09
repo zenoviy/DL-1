@@ -1,6 +1,6 @@
 .app-menu {
   width: 100%;
-  background: #0037AF;
+  background: #00007E;
   position: fixed;
   top: 0px;
 
@@ -23,6 +23,9 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
+}
+.page-body {
+  padding-top: 40px;
 }
 
 .app-menu nav ul .selected {
