@@ -23,15 +23,30 @@ class ShopInnerComponent extends React.Component {
             shopProduct: []
         }
     }
-
-    static getDerivedPropsData(props, stata){
+    // Lifecycle in React
+    static getDerivedStateFromProps(props, stata){
+        console.log("getDerivedStateFromProps")
         return { shopProduct: props.marketData ?  props.marketData : [] }
     }
-
-    componentDidUpdate(){
-        return { shopProduct: this.props.marketData ?  this.props.marketData : [] }
+    componentDidMount(){
+        console.log("componentDidMount")
     }
-         
+    componentWillMount(){
+        console.log("componentWillMount")
+    }
+    componentWillUpdate(){
+        console.log("componentWillUpdate")
+    }
+    componentWillUnmount(){
+        console.log("componentWillUnmount")
+    }
+    componentDidUpdate(){
+        console.log("componentDidUpdate")
+    }
+    componentDidCatch(){
+        console.log("componentDidCatch")
+    }
+    
 
     render(){
         const marketData = this.props.marketData.dataBody? this.props.marketData.dataBody : [];
