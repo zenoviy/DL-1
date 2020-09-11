@@ -1,0 +1,23 @@
+
+
+<div class="app-menu">
+  <nav class="container">
+    <ul>
+      <li>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        <a routerLink="/about" routerLinkActive="active">About</a>
+        <a routerLink="/shop" routerLinkActive="active">Shop</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-body">
+  <div class="container">
+    <h1>Home Component</h1>
+    <h2>{{ title }}</h2>
+  </div>
+  
+
+  <router-outlet></router-outlet>
+</div>

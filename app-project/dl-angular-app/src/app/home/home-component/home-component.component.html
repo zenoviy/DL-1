@@ -1,0 +1,26 @@
+ <div class="container">
+      <p>home-component works!</p>
+
+    <h3>Click : {{ clickCounter }}</h3>
+
+    <button (click)="clickOnButton()">Click</button>
+
+    <h3>{{ clickSecondCounter }}</h3>
+    <button (click)="increaseCount()">+</button>
+    <button (click)="decreseCount()">-</button>
+
+
+    <div class="color-block" [class.isRedClass]="isRed"></div>
+    <div class="color-block" [class.isRedClass]="!isRed"></div>
+    <div class="color-block" [style.backgroundColor]="isRed ? 'blue' : 'yellow'"></div>
+
+    <!-- isRedClass -->
+    <input type="checkbox" [(ngModel)]="isRed" [checked]="isRed" (change)="changeBoxEvent($event)">
+    <h3>{{ pageText }}</h3>
+    <input type="text" [(ngModel)]="pageText" (keyup)="changePageText($event)">
+
+    <app-inner-component [sayHello]="helloText" (clickOnButton)="clickOnButton()">
+
+        
+    </app-inner-component>
+ </div>

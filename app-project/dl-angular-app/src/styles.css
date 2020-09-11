@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.app-menu {
+    background: rgb(35, 35, 133);
+    color: #ffffff;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+.app-menu ul {
+    list-style: none;
+}
+.app-menu ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 10px;
+}
+.app-menu ul li a.active {
+    background: #ffffff;
+    color: rgb(35, 35, 133);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.page-body {
+    padding-top: 50px;
+}

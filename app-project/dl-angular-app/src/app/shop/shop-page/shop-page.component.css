@@ -1,0 +1,17 @@
+.product-row {
+    display: flex;
+}
+.product-row .product-card {
+    width: calc(100% / 4);
+}
+.product-row .product-card img {
+    width: 100%;
+}
+.product-row .product-card {
+    padding: 5px;
+}
+.product-row .product-card .card-inner {
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 6px rgba(27, 27, 27, 0.384);
+}

@@ -1,0 +1,18 @@
+<p>shop-page works!</p>
+
+
+<div class="container">
+    <div class="product-area">
+        <ul class="product-row">
+            <li *ngFor="let prodItem of allProduct" class="product-card" > 
+                <div *ngIf="prodItem" class="card-inner">
+                    <a routerLink='{{ prodItem.name | linkNameFormated:prodItem.id }}' [queryParams]='{id: prodItem.id}'>
+                        <img src={{prodItem.image[0]}} alt={{prodItem.name}}>
+                        {{ prodItem.name }}
+                        {{ prodItem.price | currency:'USD' }}
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
