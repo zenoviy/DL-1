@@ -1,1 +1,34 @@
-<p>user-page works!</p>
+<div class="container">
+    <div class="user-area-wrapper main-content-padding-area"> 
+        <div class="users-form">
+            <form [formGroup]="userForm" (ngSubmit)="addNewUser()">
+                <div ></div>
+                <label>
+                    <p>*User Name</p>
+                    <input type="text" formControlName="userName">
+                </label>
+                <label>
+                    <p>*User Nick Name</p>
+                    <input type="text" formControlName="nickName">
+                </label>
+                <label>
+                    <p>*User Email</p>
+                    <input type="email" formControlName="userMail">
+                </label>
+                <label>
+                    <p>*User Password</p>
+                    <input type="password" formControlName="userPassword">
+                </label><br>
+                <button type="submit" [disabled]="this.userForm.invalid">Create User</button>
+            </form>
+        </div>
+        <div class="users-display-area"> 
+            <ul class="user-list">
+                <li class="single-user-item" *ngFor="let user of allUsers">
+                    <p>{{user.nickName}} <button (click)="deleteUSerBiId(user.id)">X</button></p>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>

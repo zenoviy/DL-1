@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -18,6 +18,8 @@ import { UserPageComponent } from './users/user-page/user-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LinkNameFormatedPipe } from './shop/link-name-formated.pipe';
 import { ProductSinglePageComponent } from './shop/product-single-page/product-single-page.component';
+import { ShopSidePanelComponent } from './shop/shop-side-panel/shop-side-panel.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -26,6 +28,7 @@ const routes: Routes = [
   { path: 'about', component: AboutPageComponent },
   { path: 'shop', component: ShopPageComponent },
   { path: 'shop/:name', component: ProductSinglePageComponent },
+  { path: 'users', component: UserPageComponent },
   { path: '**', component: NotFoundComponent },
 ]
 
@@ -40,13 +43,16 @@ const routes: Routes = [
     UserPageComponent,
     NotFoundComponent,
     LinkNameFormatedPipe,
-    ProductSinglePageComponent
+    ProductSinglePageComponent,
+    ShopSidePanelComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     StateServiceService,

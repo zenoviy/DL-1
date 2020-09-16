@@ -1,9 +1,29 @@
-<p>product-single-page works!</p>
+
 <div class="container">
-    <div *ngIf="currentPageProduct">
-        <h1>{{ currentPageProduct.name }}</h1>    
-        <h3>{{ currentPageProduct.title }}</h3>
-        <p>{{ currentPageProduct.shortDescription }}</p>
+    <div class="page-content-wrapper main-content-padding-area">
+        <div *ngIf="currentPageProduct" class="product-body">
+            <div class="media-area">
+                <figure>
+                    <img src={{currentPageProduct.image[0]}} alt={{currentPageProduct.name}}>
+                    <div class="product-gallery">
+                        <div *ngFor="let prodPicture of currentPageProduct.image">
+                            <img class="picture-product" src={{prodPicture}}>
+                        </div>
+                    </div>
+                </figure>  
+            </div>
+
+            <div class="product-description-area">
+                <h1>{{ currentPageProduct.name }}</h1>    
+                <h3>{{ currentPageProduct.title }}</h3>
+                <p>{{ currentPageProduct.shortDescription }}</p>
+
+                <h3>{{ currentPageProduct.price | currency:'USD' }}</h3>
+                <p>{{ currentPageProduct.detailDescription }}</p>
+            </div> 
+        </div>
+        <div class="side-panel">
+            <app-shop-side-panel *ngIf="allProducts && allProducts.length > 0" [allProducts]="allProducts" [currentItem]="currentPageProduct"></app-shop-side-panel>
+        </div>
     </div>
-    
 </div>

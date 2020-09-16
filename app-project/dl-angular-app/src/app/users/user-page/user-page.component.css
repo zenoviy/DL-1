@@ -1,0 +1,51 @@
+.users-form {
+
+}
+.user-area-wrapper {
+    display: flex;
+}
+.user-area-wrapper .users-form {
+    width: 40%;
+
+}
+.users-form label p {
+    color: red;
+}
+.users-form input[type='text'],
+.users-form input[type='email'],
+.users-form input[type='password'],
+.users-form button[type='submit'] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #6c0c80;
+    border-radius: 5px;
+}
+button[type='submit'] {
+    background: #6c0c80;
+    color: #ffffff;
+    margin-top: 20px;
+}
+.users-form form {
+    width: 60%;
+    margin: 0 auto;
+}
+.user-area-wrapper .users-display-area {
+    width: 60%;
+}
+.user-list {
+    list-style: none;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+.user-list li {
+    padding: 5px;
+    background: #f9fbff;
+}
+.user-list li:nth-child(even) {
+    background: #eaeffb;
+}
+.user-list p button {
+    float: right;
+    color: red;
+}

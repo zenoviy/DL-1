@@ -15,7 +15,8 @@ export class StateServiceService {
     this.isRed = false;
     this.pageText = "";
     this.apiParams = {
-      getProduct: "http://localhost:3500/get-product"
+      getProduct: "http://localhost:3500/get-product",
+      usersApi: "http://localhost:3500/app-user-work"
     }
   }
 }

@@ -1,0 +1,11 @@
+.side-panel-card img{
+    width: 100%;
+}
+ul {
+    list-style: none;
+}
+
+.select-panel-product {
+    background: rgb(255, 178, 12); 
+    color: #ffffff;   
+}

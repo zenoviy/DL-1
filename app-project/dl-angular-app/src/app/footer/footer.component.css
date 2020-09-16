@@ -1,0 +1,9 @@
+.page-footer {
+    width: 100%;
+    min-height: 100px;
+    background: #272A33;
+    color: #ffffff;
+}
+.footer-content {
+    padding-top: 30px;
+} 

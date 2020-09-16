@@ -28,6 +28,10 @@ body {
     max-width: 1200px;
     margin: 0 auto;
 }
+.main-content-padding-area {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 .page-body {
     padding-top: 50px;
 }

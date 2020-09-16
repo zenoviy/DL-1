@@ -1,0 +1,28 @@
+
+
+.product-gallery, 
+.product-body, 
+.page-content-wrapper {
+    display: flex;
+}
+.product-gallery div {
+    width: calc(100% / 3);
+    padding: 5px;
+}
+.product-gallery div img {
+    width: 100%;
+    
+}
+.product-body .media-area {
+    width: 100%;
+}
+.product-body .media-area figure > img {
+    width: 100%;
+}
+
+.page-content-wrapper .side-panel {
+    width: 100%;
+}
+.page-content-wrapper .product-description-area {
+    width: 100%;
+}

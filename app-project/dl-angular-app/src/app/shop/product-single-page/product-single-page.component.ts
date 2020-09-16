@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServerRequestService } from '../../service/server-request.service';
 import { StateServiceService } from '../../service/state-service.service';
@@ -11,11 +11,14 @@ import { StateServiceService } from '../../service/state-service.service';
 export class ProductSinglePageComponent implements OnInit {
  navigationSubscribe: any;
  currentPageProduct: object;
-  constructor( 
+ allProducts: object[];
+  constructor ( 
     private serverRequestService: ServerRequestService,
     private activeRout: ActivatedRoute,
     private state: StateServiceService
-  ) { }
+  ) {
+    this.allProducts = [];
+   }
 
   searchProduct(allProduct: object[], id: string){
     return allProduct.find(item => item['id'] == id)
@@ -29,6 +32,7 @@ export class ProductSinglePageComponent implements OnInit {
         let apiGetProductLink = this.state.apiParams['getProduct'];
         this.serverRequestService.getServiceRequest(apiGetProductLink)
         .subscribe(data => {
+          this.allProducts = data.dataBody;
           this.currentPageProduct = this.searchProduct(data.dataBody, queryString.id);
         })
       })
@@ -36,6 +40,11 @@ export class ProductSinglePageComponent implements OnInit {
   }
   ngOnInit(): void {
     this.routerEvent()
+  }
+  ngOnDestroy(): void {
+    if(this.navigationSubscribe){
+      this.navigationSubscribe.unsubscribe();
+    }
   }
 
 }
