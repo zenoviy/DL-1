@@ -16,6 +16,7 @@ const { getAllUsers } = require("./business/getUsers");
 const { postSingleUser } = require("./business/postUsers");
 const { deleteSingleUser } = require("./business/deleteSingleUser");
 
+app.use(express.static(path.join(__dirname + '/public')));
 
 app.use("/home", express.static(path.join(__dirname + '/public')));
 
@@ -168,7 +169,7 @@ app.use(express.static(path.join(__dirname, "public/build")));
 app.use((req, res, next) => {
     res.sendFile(path.join(__dirname, "public/build", "index.html"));
 });
-
+/**/
 app.listen(process.env.__PORT, process.env.__HOST, () => {
     console.log(`Server up and runing at ${process.env.__HOST} port ${process.env.__PORT} new`);
 })
