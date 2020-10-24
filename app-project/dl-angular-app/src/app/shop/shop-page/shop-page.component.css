@@ -1,5 +1,6 @@
 .product-row {
     display: flex;
+    list-style: none;
 }
 .product-row .product-card {
     width: calc(100% / 4);
