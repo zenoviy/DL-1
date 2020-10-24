@@ -9,14 +9,16 @@ export class StateServiceService {
   isRed: boolean;
   pageText: string;
   apiParams: object;
+  _HOST: string;
   constructor() { 
     this.clickCounter = 0;
     this.clickSecondCounter = 0;
     this.isRed = false;
     this.pageText = "";
+    this._HOST = "http://localhost:3500";
     this.apiParams = {
-      getProduct: "http://localhost:3500/get-product",
-      usersApi: "http://localhost:3500/app-user-work"
+      getProduct: this["_HOST"] + "/get-product",
+      usersApi: this["_HOST"] + "/app-user-work"
     }
   }
 }

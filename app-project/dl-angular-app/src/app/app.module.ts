@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { StateServiceService } from './service/state-service.service';
 import { ServerRequestService } from './service/server-request.service';
 
-
 import { InnerComponentComponent } from './home/homeComponent/inner-component/inner-component.component';
 
 import { AppComponent } from './app.component';
@@ -20,6 +19,7 @@ import { LinkNameFormatedPipe } from './shop/link-name-formated.pipe';
 import { ProductSinglePageComponent } from './shop/product-single-page/product-single-page.component';
 import { ShopSidePanelComponent } from './shop/shop-side-panel/shop-side-panel.component';
 import { FooterComponent } from './footer/footer.component';
+import { ImageFormatPipe } from './shop/image-format.pipe';
 
 
 
@@ -45,7 +45,8 @@ const routes: Routes = [
     LinkNameFormatedPipe,
     ProductSinglePageComponent,
     ShopSidePanelComponent,
-    FooterComponent
+    FooterComponent,
+    ImageFormatPipe
   ],
   imports: [
     BrowserModule,

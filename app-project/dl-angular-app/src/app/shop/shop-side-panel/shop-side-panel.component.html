@@ -2,7 +2,7 @@
 <ul >
     <li class="side-panel-card" *ngFor="let product of allProducts" [class.select-panel-product]="currentItem.id === product.id">
         <a routerLink='/shop/{{ product.name | linkNameFormated:product.id }}' [queryParams]='{id: product.id}'>
-            <img src={{product.image[0]}}>
+            <img src='{{product.image[0] | imageFormat:host }}'>
             <p>{{ product.name }}</p>
             <h4>{{ product.price | currency:'USD'}}</h4>
         </a>

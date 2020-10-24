@@ -12,6 +12,7 @@ export class ShopSidePanelComponent implements OnInit {
 
   @Input() allProducts: object[]; 
   @Input() currentItem: object;
+  @Input() host: string;
   ngOnInit(): void {
   }
 

@@ -12,16 +12,30 @@ export class ProductSinglePageComponent implements OnInit {
  navigationSubscribe: any;
  currentPageProduct: object;
  allProducts: object[];
+ selectedPicture: string;
   constructor ( 
     private serverRequestService: ServerRequestService,
     private activeRout: ActivatedRoute,
     private state: StateServiceService
   ) {
     this.allProducts = [];
+    this.selectedPicture = "";
    }
 
   searchProduct(allProduct: object[], id: string){
     return allProduct.find(item => item['id'] == id)
+  }
+  selectImage(image, event){
+    let formatedImage; 
+    var regex = new RegExp("^(http|https)://");
+    let res = image.match(regex)? image : this.state._HOST + image;
+
+    console.log(image, formatedImage, res)
+    if(event){
+      event.target.classList.add("selectd-picture")
+      console.log(event)
+    } 
+    this.selectedPicture = res;
   }
 
   routerEvent(){
@@ -34,6 +48,7 @@ export class ProductSinglePageComponent implements OnInit {
         .subscribe(data => {
           this.allProducts = data.dataBody;
           this.currentPageProduct = this.searchProduct(data.dataBody, queryString.id);
+          this.selectImage(this.currentPageProduct['image'][0], null);
         })
       })
     })

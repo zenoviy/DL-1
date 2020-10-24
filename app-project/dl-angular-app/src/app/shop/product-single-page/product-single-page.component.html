@@ -4,10 +4,11 @@
         <div *ngIf="currentPageProduct" class="product-body">
             <div class="media-area">
                 <figure>
-                    <img src={{currentPageProduct.image[0]}} alt={{currentPageProduct.name}}>
+                    <img src='{{selectedPicture}}' alt={{currentPageProduct.name}}>
                     <div class="product-gallery">
-                        <div *ngFor="let prodPicture of currentPageProduct.image">
-                            <img class="picture-product" src={{prodPicture}}>
+                        <div *ngFor="let prodPicture of currentPageProduct.image" class="gallery-wrapper">
+                            <img (click)='selectImage(prodPicture, $event)' [class.selectdPicture] = 'selectedPicture === (prodPicture | imageFormat:state._HOST)' 
+                            class="picture-product" src='{{prodPicture | imageFormat:state._HOST}}'>
                         </div>
                     </div>
                 </figure>  
@@ -23,7 +24,7 @@
             </div> 
         </div>
         <div class="side-panel">
-            <app-shop-side-panel *ngIf="allProducts && allProducts.length > 0" [allProducts]="allProducts" [currentItem]="currentPageProduct"></app-shop-side-panel>
+            <app-shop-side-panel *ngIf="allProducts && allProducts.length > 0" [allProducts]="allProducts" [currentItem]="currentPageProduct" [host]="state._HOST"></app-shop-side-panel>
         </div>
     </div>
 </div>
