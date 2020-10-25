@@ -2,6 +2,7 @@
     width: 15%;
     background: #f9f9f9;
     padding: 5px;
+    box-sizing: border-box;
 }
 .side-panell-wrapper ul {
     list-style: none;
@@ -21,4 +22,10 @@
 }
 .side-panell-wrapper a {
     text-decoration: none;
+}
+
+@media screen and (max-width: 650px){
+    .side-panell-wrapper {
+        width: 100%;
+    }
 }

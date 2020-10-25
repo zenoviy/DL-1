@@ -55,12 +55,12 @@ function BaseRouter(props){
         </Route>
         <Route exact path="/shop-page/:name">
           <ShopProvider appData={props.appData}>
-            <ShopSinglePageComponent></ShopSinglePageComponent>
+            <ShopSinglePageComponent appData={props.appData}></ShopSinglePageComponent>
           </ShopProvider>
         </Route>
         <Route exact path="/shop-page">
           <ShopProvider appData={props.appData}>
-            <ShopPageComponent></ShopPageComponent>
+            <ShopPageComponent appData={props.appData}></ShopPageComponent>
           </ShopProvider>
         </Route>
         <Route path="*">

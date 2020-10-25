@@ -24,3 +24,9 @@ export function ShopProvider(props){
         </ShopStateContext.Provider>
     )
 }
+
+export function formatImage(image, host){
+    let regex = new RegExp("^(http|https)://");
+    let res = image.match(regex);
+    return res? image : host + image;
+}

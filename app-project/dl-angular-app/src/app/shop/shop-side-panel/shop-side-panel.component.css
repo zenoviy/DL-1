@@ -1,11 +1,19 @@
+a {
+    text-decoration: none;
+}
 .side-panel-card img{
     width: 100%;
 }
 ul {
     list-style: none;
+    padding: 0px;
 }
 
 .select-panel-product {
     background: rgb(255, 178, 12); 
     color: #ffffff;   
+    overflow: auto;
+}
+.select-panel-product a {
+    color: #ffffff;
 }
